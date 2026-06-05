@@ -2,8 +2,8 @@
 
 <!-- x-release-please-start-version -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.bila.api/bila-java)](https://central.sonatype.com/artifact/com.bila.api/bila-java/0.0.2)
-[![javadoc](https://javadoc.io/badge2/com.bila.api/bila-java/0.0.2/javadoc.svg)](https://javadoc.io/doc/com.bila.api/bila-java/0.0.2)
+[![Maven Central](https://img.shields.io/maven-central/v/com.usebila.api/bila-java)](https://central.sonatype.com/artifact/com.usebila.api/bila-java/0.0.2)
+[![javadoc](https://javadoc.io/badge2/com.usebila.api/bila-java/0.0.2/javadoc.svg)](https://javadoc.io/doc/com.usebila.api/bila-java/0.0.2)
 
 <!-- x-release-please-end -->
 
@@ -13,7 +13,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 <!-- x-release-please-start-version -->
 
-Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.bila.api/bila-java/0.0.2).
+Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.usebila.api/bila-java/0.0.2).
 
 <!-- x-release-please-end -->
 
@@ -24,14 +24,14 @@ Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.bila.api/bila-
 ### Gradle
 
 ```kotlin
-implementation("com.bila.api:bila-java:0.0.2")
+implementation("com.usebila.api:bila-java:0.0.2")
 ```
 
 ### Maven
 
 ```xml
 <dependency>
-  <groupId>com.bila.api</groupId>
+  <groupId>com.usebila.api</groupId>
   <artifactId>bila-java</artifactId>
   <version>0.0.2</version>
 </dependency>
@@ -46,10 +46,10 @@ This library requires Java 8 or later.
 ## Usage
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
-import com.bila.api.models.accounts.AccountListParams;
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.models.accounts.AccountListParams;
+import com.usebila.api.models.accounts.AccountListResponse;
 
 // Configures using the `bila.apiKey` and `bila.baseUrl` system properties
 // Or configures using the `BILA_API_KEY` and `BILA_BASE_URL` environment variables
@@ -63,8 +63,8 @@ AccountListResponse accounts = client.accounts().list();
 Configure the client using system properties or environment variables:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 // Configures using the `bila.apiKey` and `bila.baseUrl` system properties
 // Or configures using the `BILA_API_KEY` and `BILA_BASE_URL` environment variables
@@ -74,8 +74,8 @@ BilaClient client = BilaOkHttpClient.fromEnv();
 Or manually:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 BilaClient client = BilaOkHttpClient.builder()
     .apiKey("My API Key")
@@ -85,8 +85,8 @@ BilaClient client = BilaOkHttpClient.builder()
 Or using a combination of the two approaches:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 BilaClient client = BilaOkHttpClient.builder()
     // Configures using the `bila.apiKey` and `bila.baseUrl` system properties
@@ -114,7 +114,7 @@ System properties take precedence over environment variables.
 To temporarily use a modified client configuration, while reusing the same connection and thread pools, call `withOptions()` on any client or service:
 
 ```java
-import com.bila.api.client.BilaClient;
+import com.usebila.api.client.BilaClient;
 
 BilaClient clientWithOptions = client.withOptions(optionsBuilder -> {
     optionsBuilder.baseUrl("https://example.com");
@@ -143,10 +143,10 @@ Because each class is immutable, builder modification will _never_ affect alread
 The default client is synchronous. To switch to asynchronous execution, call the `async()` method:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
-import com.bila.api.models.accounts.AccountListParams;
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.models.accounts.AccountListParams;
+import com.usebila.api.models.accounts.AccountListResponse;
 import java.util.concurrent.CompletableFuture;
 
 // Configures using the `bila.apiKey` and `bila.baseUrl` system properties
@@ -159,10 +159,10 @@ CompletableFuture<AccountListResponse> accounts = client.async().accounts().list
 Or create an asynchronous client from the beginning:
 
 ```java
-import com.bila.api.client.BilaClientAsync;
-import com.bila.api.client.okhttp.BilaOkHttpClientAsync;
-import com.bila.api.models.accounts.AccountListParams;
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.client.BilaClientAsync;
+import com.usebila.api.client.okhttp.BilaOkHttpClientAsync;
+import com.usebila.api.models.accounts.AccountListParams;
+import com.usebila.api.models.accounts.AccountListResponse;
 import java.util.concurrent.CompletableFuture;
 
 // Configures using the `bila.apiKey` and `bila.baseUrl` system properties
@@ -181,10 +181,10 @@ The SDK defines methods that deserialize responses into instances of Java classe
 To access this data, prefix any HTTP method call on a client or service with `withRawResponse()`:
 
 ```java
-import com.bila.api.core.http.Headers;
-import com.bila.api.core.http.HttpResponseFor;
-import com.bila.api.models.accounts.AccountListParams;
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.core.http.Headers;
+import com.usebila.api.core.http.HttpResponseFor;
+import com.usebila.api.models.accounts.AccountListParams;
+import com.usebila.api.models.accounts.AccountListResponse;
 
 HttpResponseFor<AccountListResponse> accounts = client.accounts().withRawResponse().list();
 
@@ -195,7 +195,7 @@ Headers headers = accounts.headers();
 You can still deserialize the response into an instance of a Java class if needed:
 
 ```java
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.models.accounts.AccountListResponse;
 
 AccountListResponse parsedAccounts = accounts.parse();
 ```
@@ -204,26 +204,26 @@ AccountListResponse parsedAccounts = accounts.parse();
 
 The SDK throws custom unchecked exception types:
 
-- [`BilaServiceException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BilaServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
+- [`BilaServiceException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BilaServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
 
-  | Status | Exception                                                                                                              |
-  | ------ | ---------------------------------------------------------------------------------------------------------------------- |
-  | 400    | [`BadRequestException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BadRequestException.kt)                     |
-  | 401    | [`UnauthorizedException`](bila-java-core/src/main/kotlin/com/bila/api/errors/UnauthorizedException.kt)                 |
-  | 403    | [`PermissionDeniedException`](bila-java-core/src/main/kotlin/com/bila/api/errors/PermissionDeniedException.kt)         |
-  | 404    | [`NotFoundException`](bila-java-core/src/main/kotlin/com/bila/api/errors/NotFoundException.kt)                         |
-  | 422    | [`UnprocessableEntityException`](bila-java-core/src/main/kotlin/com/bila/api/errors/UnprocessableEntityException.kt)   |
-  | 429    | [`RateLimitException`](bila-java-core/src/main/kotlin/com/bila/api/errors/RateLimitException.kt)                       |
-  | 5xx    | [`InternalServerException`](bila-java-core/src/main/kotlin/com/bila/api/errors/InternalServerException.kt)             |
-  | others | [`UnexpectedStatusCodeException`](bila-java-core/src/main/kotlin/com/bila/api/errors/UnexpectedStatusCodeException.kt) |
+  | Status | Exception                                                                                                                 |
+  | ------ | ------------------------------------------------------------------------------------------------------------------------- |
+  | 400    | [`BadRequestException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BadRequestException.kt)                     |
+  | 401    | [`UnauthorizedException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/UnauthorizedException.kt)                 |
+  | 403    | [`PermissionDeniedException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/PermissionDeniedException.kt)         |
+  | 404    | [`NotFoundException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/NotFoundException.kt)                         |
+  | 422    | [`UnprocessableEntityException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/UnprocessableEntityException.kt)   |
+  | 429    | [`RateLimitException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/RateLimitException.kt)                       |
+  | 5xx    | [`InternalServerException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/InternalServerException.kt)             |
+  | others | [`UnexpectedStatusCodeException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/UnexpectedStatusCodeException.kt) |
 
-- [`BilaIoException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BilaIoException.kt): I/O networking errors.
+- [`BilaIoException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BilaIoException.kt): I/O networking errors.
 
-- [`BilaRetryableException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BilaRetryableException.kt): Generic error indicating a failure that could be retried by the client.
+- [`BilaRetryableException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BilaRetryableException.kt): Generic error indicating a failure that could be retried by the client.
 
-- [`BilaInvalidDataException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BilaInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
+- [`BilaInvalidDataException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BilaInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
-- [`BilaException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BilaException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
+- [`BilaException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BilaException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
 
 ## Logging
 
@@ -242,9 +242,9 @@ export BILA_LOG=debug
 Or configure the client manually using the `logLevel` method:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
-import com.bila.api.core.LogLevel;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.core.LogLevel;
 
 BilaClient client = BilaOkHttpClient.builder()
     .fromEnv()
@@ -264,7 +264,7 @@ The SDK depends on [Jackson](https://github.com/FasterXML/jackson) for JSON seri
 
 The SDK throws an exception if it detects an incompatible Jackson version at runtime (e.g. if the default version was overridden in your Maven or Gradle config).
 
-If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClient.kt) or [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClientAsync.kt).
+If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClient.kt) or [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClientAsync.kt).
 
 > [!CAUTION]
 > We make no guarantee that the SDK works correctly when the Jackson version check is disabled.
@@ -290,8 +290,8 @@ The API may also explicitly instruct the SDK to retry or not retry a request.
 To set a custom number of retries, configure the client using the `maxRetries` method:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 BilaClient client = BilaOkHttpClient.builder()
     .fromEnv()
@@ -306,7 +306,7 @@ Requests time out after 1 minute by default.
 To set a custom timeout, configure the method call using the `timeout` method:
 
 ```java
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.models.accounts.AccountListResponse;
 
 AccountListResponse accounts = client.accounts().list(RequestOptions.builder().timeout(Duration.ofSeconds(30)).build());
 ```
@@ -314,8 +314,8 @@ AccountListResponse accounts = client.accounts().list(RequestOptions.builder().t
 Or configure the default for all method calls at the client level:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 import java.time.Duration;
 
 BilaClient client = BilaOkHttpClient.builder()
@@ -329,8 +329,8 @@ BilaClient client = BilaOkHttpClient.builder()
 To route requests through a proxy, configure the client using the `proxy` method:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
@@ -347,9 +347,9 @@ BilaClient client = BilaOkHttpClient.builder()
 If the proxy responds with `407 Proxy Authentication Required`, supply credentials by also configuring `proxyAuthenticator`:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
-import com.bila.api.core.http.ProxyAuthenticator;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.core.http.ProxyAuthenticator;
 
 BilaClient client = BilaOkHttpClient.builder()
     .fromEnv()
@@ -364,8 +364,8 @@ BilaClient client = BilaOkHttpClient.builder()
 To customize the underlying OkHttp connection pool, configure the client using the `maxIdleConnections` and `keepAliveDuration` methods:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 import java.time.Duration;
 
 BilaClient client = BilaOkHttpClient.builder()
@@ -387,8 +387,8 @@ If both options are unset, OkHttp's default connection pool settings are used.
 To configure how HTTPS connections are secured, configure the client using the `sslSocketFactory`, `trustManager`, and `hostnameVerifier` methods:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 BilaClient client = BilaOkHttpClient.builder()
     .fromEnv()
@@ -404,8 +404,8 @@ BilaClient client = BilaOkHttpClient.builder()
 The SDK sends requests to the production by default. To send requests to a different environment, configure the client like so:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 BilaClient client = BilaOkHttpClient.builder()
     .fromEnv()
@@ -420,10 +420,10 @@ The SDK consists of three artifacts:
 - `bila-java-core`
   - Contains core SDK logic
   - Does not depend on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`BilaClient`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClient.kt), [`BilaClientAsync`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientAsync.kt), [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientImpl.kt), and [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientAsyncImpl.kt), all of which can work with any HTTP client
+  - Exposes [`BilaClient`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClient.kt), [`BilaClientAsync`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientAsync.kt), [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientImpl.kt), and [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientAsyncImpl.kt), all of which can work with any HTTP client
 - `bila-java-client-okhttp`
   - Depends on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClient.kt) and [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClientAsync.kt), which provide a way to construct [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientImpl.kt) and [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientAsyncImpl.kt), respectively, using OkHttp
+  - Exposes [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClient.kt) and [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClientAsync.kt), which provide a way to construct [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientImpl.kt) and [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientAsyncImpl.kt), respectively, using OkHttp
 - `bila-java`
   - Depends on and exposes the APIs of both `bila-java-core` and `bila-java-client-okhttp`
   - Does not have its own logic
@@ -438,16 +438,16 @@ This structure allows replacing the SDK's default HTTP client without pulling in
 To use a customized `OkHttpClient`:
 
 1. Replace your [`bila-java` dependency](#installation) with `bila-java-core`
-2. Copy `bila-java-client-okhttp`'s [`OkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/OkHttpClient.kt) class into your code and customize it
-3. Construct [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientImpl.kt) or [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientAsyncImpl.kt), similarly to [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClient.kt) or [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClientAsync.kt), using your customized client
+2. Copy `bila-java-client-okhttp`'s [`OkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/OkHttpClient.kt) class into your code and customize it
+3. Construct [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientImpl.kt) or [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientAsyncImpl.kt), similarly to [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClient.kt) or [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClientAsync.kt), using your customized client
 
 ### Completely custom HTTP client
 
 To use a completely custom HTTP client:
 
 1. Replace your [`bila-java` dependency](#installation) with `bila-java-core`
-2. Write a class that implements the [`HttpClient`](bila-java-core/src/main/kotlin/com/bila/api/core/http/HttpClient.kt) interface
-3. Construct [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientImpl.kt) or [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/bila/api/client/BilaClientAsyncImpl.kt), similarly to [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClient.kt) or [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/bila/api/client/okhttp/BilaOkHttpClientAsync.kt), using your new client class
+2. Write a class that implements the [`HttpClient`](bila-java-core/src/main/kotlin/com/usebila/api/core/http/HttpClient.kt) interface
+3. Construct [`BilaClientImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientImpl.kt) or [`BilaClientAsyncImpl`](bila-java-core/src/main/kotlin/com/usebila/api/client/BilaClientAsyncImpl.kt), similarly to [`BilaOkHttpClient`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClient.kt) or [`BilaOkHttpClientAsync`](bila-java-client-okhttp/src/main/kotlin/com/usebila/api/client/okhttp/BilaOkHttpClientAsync.kt), using your new client class
 
 ## Undocumented API functionality
 
@@ -458,8 +458,8 @@ The SDK is typed for convenient usage of the documented API. However, it also su
 To set undocumented parameters, call the `putAdditionalHeader`, `putAdditionalQueryParam`, or `putAdditionalBodyProperty` methods on any `Params` class:
 
 ```java
-import com.bila.api.core.JsonValue;
-import com.bila.api.models.accounts.AccountListParams;
+import com.usebila.api.core.JsonValue;
+import com.usebila.api.models.accounts.AccountListParams;
 
 AccountListParams params = AccountListParams.builder()
     .putAdditionalHeader("Secret-Header", "42")
@@ -470,18 +470,18 @@ AccountListParams params = AccountListParams.builder()
 
 These can be accessed on the built object later using the `_additionalHeaders()`, `_additionalQueryParams()`, and `_additionalBodyProperties()` methods.
 
-To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](bila-java-core/src/main/kotlin/com/bila/api/core/Values.kt) object to its setter:
+To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](bila-java-core/src/main/kotlin/com/usebila/api/core/Values.kt) object to its setter:
 
 ```java
-import com.bila.api.models.accounts.AccountListParams;
+import com.usebila.api.models.accounts.AccountListParams;
 
 AccountListParams params = AccountListParams.builder().build();
 ```
 
-The most straightforward way to create a [`JsonValue`](bila-java-core/src/main/kotlin/com/bila/api/core/Values.kt) is using its `from(...)` method:
+The most straightforward way to create a [`JsonValue`](bila-java-core/src/main/kotlin/com/usebila/api/core/Values.kt) is using its `from(...)` method:
 
 ```java
-import com.bila.api.core.JsonValue;
+import com.usebila.api.core.JsonValue;
 import java.util.List;
 import java.util.Map;
 
@@ -519,12 +519,12 @@ JsonValue complexValue = JsonValue.from(Map.of(
 
 Normally a `Builder` class's `build` method will throw [`IllegalStateException`](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html) if any required parameter or property is unset.
 
-To forcibly omit a required parameter or property, pass [`JsonMissing`](bila-java-core/src/main/kotlin/com/bila/api/core/Values.kt):
+To forcibly omit a required parameter or property, pass [`JsonMissing`](bila-java-core/src/main/kotlin/com/usebila/api/core/Values.kt):
 
 ```java
-import com.bila.api.core.JsonMissing;
-import com.bila.api.models.accounts.AccountListParams;
-import com.bila.api.models.accounts.AccountRetrieveParams;
+import com.usebila.api.core.JsonMissing;
+import com.usebila.api.models.accounts.AccountListParams;
+import com.usebila.api.models.accounts.AccountRetrieveParams;
 
 AccountListParams params = AccountRetrieveParams.builder()
     .id(JsonMissing.of())
@@ -536,7 +536,7 @@ AccountListParams params = AccountRetrieveParams.builder()
 To access undocumented response properties, call the `_additionalProperties()` method:
 
 ```java
-import com.bila.api.core.JsonValue;
+import com.usebila.api.core.JsonValue;
 import java.util.Map;
 
 Map<String, JsonValue> additionalProperties = client.accounts().list(params)._additionalProperties();
@@ -566,7 +566,7 @@ String result = secretPropertyValue.accept(new JsonValue.Visitor<>() {
 To access a property's raw JSON value, which may be undocumented, call its `_` prefixed method:
 
 ```java
-import com.bila.api.core.JsonField;
+import com.usebila.api.core.JsonField;
 import java.util.Optional;
 
 JsonField<Object> field = client.accounts().list(params)._field();
@@ -589,14 +589,14 @@ if (field.isMissing()) {
 
 In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK may expect a property to contain a `String`, but the API could return something else.
 
-By default, the SDK will not throw an exception in this case. It will throw [`BilaInvalidDataException`](bila-java-core/src/main/kotlin/com/bila/api/errors/BilaInvalidDataException.kt) only if you directly access the property.
+By default, the SDK will not throw an exception in this case. It will throw [`BilaInvalidDataException`](bila-java-core/src/main/kotlin/com/usebila/api/errors/BilaInvalidDataException.kt) only if you directly access the property.
 
 Validating the response is _not_ forwards compatible with new types from the API for existing fields.
 
 If you would still prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 
 ```java
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.models.accounts.AccountListResponse;
 
 AccountListResponse accounts = client.accounts().list(params).validate();
 ```
@@ -604,7 +604,7 @@ AccountListResponse accounts = client.accounts().list(params).validate();
 Or configure the method call to validate the response using the `responseValidation` method:
 
 ```java
-import com.bila.api.models.accounts.AccountListResponse;
+import com.usebila.api.models.accounts.AccountListResponse;
 
 AccountListResponse accounts = client.accounts().list(RequestOptions.builder().responseValidation(true).build());
 ```
@@ -612,8 +612,8 @@ AccountListResponse accounts = client.accounts().list(RequestOptions.builder().r
 Or configure the default for all method calls at the client level:
 
 ```java
-import com.bila.api.client.BilaClient;
-import com.bila.api.client.okhttp.BilaOkHttpClient;
+import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 
 BilaClient client = BilaOkHttpClient.builder()
     .fromEnv()

@@ -1,5 +1,0 @@
-package com.bila.api.errors
-
-open class BilaException
-@JvmOverloads
-constructor(message: String? = null, cause: Throwable? = null) : RuntimeException(message, cause)
