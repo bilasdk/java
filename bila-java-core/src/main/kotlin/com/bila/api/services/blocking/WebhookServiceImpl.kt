@@ -16,10 +16,10 @@ import com.bila.api.core.http.HttpResponseFor
 import com.bila.api.core.http.json
 import com.bila.api.core.http.parseable
 import com.bila.api.core.prepare
-import com.bila.api.models.accounts.BilaResponse
 import com.bila.api.models.webhooks.WebhookCreateParams
 import com.bila.api.models.webhooks.WebhookCreateResponse
 import com.bila.api.models.webhooks.WebhookDeactivateParams
+import com.bila.api.models.webhooks.WebhookDeactivateResponse
 import com.bila.api.models.webhooks.WebhookGetDeliveriesParams
 import com.bila.api.models.webhooks.WebhookGetDeliveriesResponse
 import com.bila.api.models.webhooks.WebhookListEventsParams
@@ -70,7 +70,7 @@ class WebhookServiceImpl internal constructor(private val clientOptions: ClientO
     override fun deactivate(
         params: WebhookDeactivateParams,
         requestOptions: RequestOptions,
-    ): BilaResponse =
+    ): WebhookDeactivateResponse =
         // delete /api/v1/bila/webhooks/{id}
         withRawResponse().deactivate(params, requestOptions).parse()
 
@@ -194,13 +194,13 @@ class WebhookServiceImpl internal constructor(private val clientOptions: ClientO
             }
         }
 
-        private val deactivateHandler: Handler<BilaResponse> =
-            jsonHandler<BilaResponse>(clientOptions.jsonMapper)
+        private val deactivateHandler: Handler<WebhookDeactivateResponse> =
+            jsonHandler<WebhookDeactivateResponse>(clientOptions.jsonMapper)
 
         override fun deactivate(
             params: WebhookDeactivateParams,
             requestOptions: RequestOptions,
-        ): HttpResponseFor<BilaResponse> {
+        ): HttpResponseFor<WebhookDeactivateResponse> {
             // We check here instead of in the params builder because this can be specified
             // positionally or in the params class.
             checkRequired("id", params.id().getOrNull())

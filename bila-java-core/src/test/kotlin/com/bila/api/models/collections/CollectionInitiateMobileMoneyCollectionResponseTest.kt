@@ -17,26 +17,22 @@ internal class CollectionInitiateMobileMoneyCollectionResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .data(
-                    CollectionInitiateMobileMoneyCollectionResponse.Data.builder()
+                    BilaCollectionResponseDto.builder()
                         .id("col-001")
                         .amount(100.0)
                         .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                         .currency("ZMW")
                         .customer(
-                            CollectionInitiateMobileMoneyCollectionResponse.Data.Customer.builder()
+                            BilaCollectionCustomerDto.builder()
                                 .name("JOHN DOE")
                                 .operator("airtel")
                                 .phone("0977123456")
                                 .build()
                         )
                         .reference("order-12345")
-                        .status(
-                            CollectionInitiateMobileMoneyCollectionResponse.Data.Status.SUCCESSFUL
-                        )
+                        .status(BilaCollectionResponseDto.Status.PENDING)
                         .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
-                        .feeBearer(
-                            CollectionInitiateMobileMoneyCollectionResponse.Data.FeeBearer.MERCHANT
-                        )
+                        .feeBearer(BilaCollectionResponseDto.FeeBearer.MERCHANT)
                         .narration("Payment for Order #12345")
                         .build()
                 )
@@ -47,24 +43,22 @@ internal class CollectionInitiateMobileMoneyCollectionResponseTest {
         assertThat(collectionInitiateMobileMoneyCollectionResponse.status()).isEqualTo(true)
         assertThat(collectionInitiateMobileMoneyCollectionResponse.data())
             .contains(
-                CollectionInitiateMobileMoneyCollectionResponse.Data.builder()
+                BilaCollectionResponseDto.builder()
                     .id("col-001")
                     .amount(100.0)
                     .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                     .currency("ZMW")
                     .customer(
-                        CollectionInitiateMobileMoneyCollectionResponse.Data.Customer.builder()
+                        BilaCollectionCustomerDto.builder()
                             .name("JOHN DOE")
                             .operator("airtel")
                             .phone("0977123456")
                             .build()
                     )
                     .reference("order-12345")
-                    .status(CollectionInitiateMobileMoneyCollectionResponse.Data.Status.SUCCESSFUL)
+                    .status(BilaCollectionResponseDto.Status.PENDING)
                     .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
-                    .feeBearer(
-                        CollectionInitiateMobileMoneyCollectionResponse.Data.FeeBearer.MERCHANT
-                    )
+                    .feeBearer(BilaCollectionResponseDto.FeeBearer.MERCHANT)
                     .narration("Payment for Order #12345")
                     .build()
             )
@@ -78,26 +72,22 @@ internal class CollectionInitiateMobileMoneyCollectionResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .data(
-                    CollectionInitiateMobileMoneyCollectionResponse.Data.builder()
+                    BilaCollectionResponseDto.builder()
                         .id("col-001")
                         .amount(100.0)
                         .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                         .currency("ZMW")
                         .customer(
-                            CollectionInitiateMobileMoneyCollectionResponse.Data.Customer.builder()
+                            BilaCollectionCustomerDto.builder()
                                 .name("JOHN DOE")
                                 .operator("airtel")
                                 .phone("0977123456")
                                 .build()
                         )
                         .reference("order-12345")
-                        .status(
-                            CollectionInitiateMobileMoneyCollectionResponse.Data.Status.SUCCESSFUL
-                        )
+                        .status(BilaCollectionResponseDto.Status.PENDING)
                         .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
-                        .feeBearer(
-                            CollectionInitiateMobileMoneyCollectionResponse.Data.FeeBearer.MERCHANT
-                        )
+                        .feeBearer(BilaCollectionResponseDto.FeeBearer.MERCHANT)
                         .narration("Payment for Order #12345")
                         .build()
                 )

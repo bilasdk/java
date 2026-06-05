@@ -5,10 +5,10 @@ package com.bila.api.services.blocking
 import com.bila.api.core.ClientOptions
 import com.bila.api.core.RequestOptions
 import com.bila.api.core.http.HttpResponseFor
-import com.bila.api.models.accounts.BilaResponse
 import com.bila.api.models.webhooks.WebhookCreateParams
 import com.bila.api.models.webhooks.WebhookCreateResponse
 import com.bila.api.models.webhooks.WebhookDeactivateParams
+import com.bila.api.models.webhooks.WebhookDeactivateResponse
 import com.bila.api.models.webhooks.WebhookGetDeliveriesParams
 import com.bila.api.models.webhooks.WebhookGetDeliveriesResponse
 import com.bila.api.models.webhooks.WebhookListEventsParams
@@ -95,33 +95,34 @@ interface WebhookService {
         list(WebhookListParams.none(), requestOptions)
 
     /** Deactivate a webhook */
-    fun deactivate(id: String): BilaResponse = deactivate(id, WebhookDeactivateParams.none())
+    fun deactivate(id: String): WebhookDeactivateResponse =
+        deactivate(id, WebhookDeactivateParams.none())
 
     /** @see deactivate */
     fun deactivate(
         id: String,
         params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): BilaResponse = deactivate(params.toBuilder().id(id).build(), requestOptions)
+    ): WebhookDeactivateResponse = deactivate(params.toBuilder().id(id).build(), requestOptions)
 
     /** @see deactivate */
     fun deactivate(
         id: String,
         params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
-    ): BilaResponse = deactivate(id, params, RequestOptions.none())
+    ): WebhookDeactivateResponse = deactivate(id, params, RequestOptions.none())
 
     /** @see deactivate */
     fun deactivate(
         params: WebhookDeactivateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): BilaResponse
+    ): WebhookDeactivateResponse
 
     /** @see deactivate */
-    fun deactivate(params: WebhookDeactivateParams): BilaResponse =
+    fun deactivate(params: WebhookDeactivateParams): WebhookDeactivateResponse =
         deactivate(params, RequestOptions.none())
 
     /** @see deactivate */
-    fun deactivate(id: String, requestOptions: RequestOptions): BilaResponse =
+    fun deactivate(id: String, requestOptions: RequestOptions): WebhookDeactivateResponse =
         deactivate(id, WebhookDeactivateParams.none(), requestOptions)
 
     /** Get delivery history */
@@ -304,7 +305,7 @@ interface WebhookService {
          * same as [WebhookService.deactivate].
          */
         @MustBeClosed
-        fun deactivate(id: String): HttpResponseFor<BilaResponse> =
+        fun deactivate(id: String): HttpResponseFor<WebhookDeactivateResponse> =
             deactivate(id, WebhookDeactivateParams.none())
 
         /** @see deactivate */
@@ -313,7 +314,7 @@ interface WebhookService {
             id: String,
             params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<BilaResponse> =
+        ): HttpResponseFor<WebhookDeactivateResponse> =
             deactivate(params.toBuilder().id(id).build(), requestOptions)
 
         /** @see deactivate */
@@ -321,23 +322,28 @@ interface WebhookService {
         fun deactivate(
             id: String,
             params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
-        ): HttpResponseFor<BilaResponse> = deactivate(id, params, RequestOptions.none())
+        ): HttpResponseFor<WebhookDeactivateResponse> =
+            deactivate(id, params, RequestOptions.none())
 
         /** @see deactivate */
         @MustBeClosed
         fun deactivate(
             params: WebhookDeactivateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): HttpResponseFor<BilaResponse>
+        ): HttpResponseFor<WebhookDeactivateResponse>
 
         /** @see deactivate */
         @MustBeClosed
-        fun deactivate(params: WebhookDeactivateParams): HttpResponseFor<BilaResponse> =
-            deactivate(params, RequestOptions.none())
+        fun deactivate(
+            params: WebhookDeactivateParams
+        ): HttpResponseFor<WebhookDeactivateResponse> = deactivate(params, RequestOptions.none())
 
         /** @see deactivate */
         @MustBeClosed
-        fun deactivate(id: String, requestOptions: RequestOptions): HttpResponseFor<BilaResponse> =
+        fun deactivate(
+            id: String,
+            requestOptions: RequestOptions,
+        ): HttpResponseFor<WebhookDeactivateResponse> =
             deactivate(id, WebhookDeactivateParams.none(), requestOptions)
 
         /**

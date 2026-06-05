@@ -18,7 +18,7 @@ internal class WebhookListResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .addData(
-                    WebhookListResponse.Data.builder()
+                    WebhookConfigResponseDto.builder()
                         .id("68f11209-451f-4a15-bfcd-d916eb8b09f4")
                         .createdAt(OffsetDateTime.parse("2026-04-01T10:00:00.000Z"))
                         .addEvent("payment.completed")
@@ -36,7 +36,7 @@ internal class WebhookListResponseTest {
         assertThat(webhookListResponse.status()).isEqualTo(true)
         assertThat(webhookListResponse.data().getOrNull())
             .containsExactly(
-                WebhookListResponse.Data.builder()
+                WebhookConfigResponseDto.builder()
                     .id("68f11209-451f-4a15-bfcd-d916eb8b09f4")
                     .createdAt(OffsetDateTime.parse("2026-04-01T10:00:00.000Z"))
                     .addEvent("payment.completed")
@@ -58,7 +58,7 @@ internal class WebhookListResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .addData(
-                    WebhookListResponse.Data.builder()
+                    WebhookConfigResponseDto.builder()
                         .id("68f11209-451f-4a15-bfcd-d916eb8b09f4")
                         .createdAt(OffsetDateTime.parse("2026-04-01T10:00:00.000Z"))
                         .addEvent("payment.completed")

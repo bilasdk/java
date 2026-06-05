@@ -3,6 +3,7 @@
 package com.bila.api.models.transfers
 
 import com.bila.api.core.jsonMapper
+import com.bila.api.models.PaginationMetaDto
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import java.time.OffsetDateTime
 import org.assertj.core.api.Assertions.assertThat
@@ -19,13 +20,13 @@ internal class TransferListResponseTest {
                 .data(
                     TransferListResponse.Data.builder()
                         .addData(
-                            TransferListResponse.Data.InnerData.builder()
+                            TransferResponseDto.builder()
                                 .id("txn-001")
                                 .amount(1000.0)
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                                 .currency("ZMW")
                                 .recipient(
-                                    TransferListResponse.Data.InnerData.Recipient.builder()
+                                    TransferRecipientDto.builder()
                                         .accountName("JOHN DOE")
                                         .accountNumber("1234567890")
                                         .bankName("Zambia National Commercial Bank")
@@ -34,14 +35,14 @@ internal class TransferListResponseTest {
                                         .build()
                                 )
                                 .reference("payout-12345")
-                                .status(TransferListResponse.Data.InnerData.Status.SUCCESSFUL)
-                                .type(TransferListResponse.Data.InnerData.Type.BANK_ACCOUNT)
+                                .status(TransferResponseDto.Status.SUCCESSFUL)
+                                .type(TransferResponseDto.Type.BANK_ACCOUNT)
                                 .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
                                 .narration("Salary payment")
                                 .build()
                         )
                         .meta(
-                            TransferListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)
@@ -58,13 +59,13 @@ internal class TransferListResponseTest {
             .contains(
                 TransferListResponse.Data.builder()
                     .addData(
-                        TransferListResponse.Data.InnerData.builder()
+                        TransferResponseDto.builder()
                             .id("txn-001")
                             .amount(1000.0)
                             .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                             .currency("ZMW")
                             .recipient(
-                                TransferListResponse.Data.InnerData.Recipient.builder()
+                                TransferRecipientDto.builder()
                                     .accountName("JOHN DOE")
                                     .accountNumber("1234567890")
                                     .bankName("Zambia National Commercial Bank")
@@ -73,14 +74,14 @@ internal class TransferListResponseTest {
                                     .build()
                             )
                             .reference("payout-12345")
-                            .status(TransferListResponse.Data.InnerData.Status.SUCCESSFUL)
-                            .type(TransferListResponse.Data.InnerData.Type.BANK_ACCOUNT)
+                            .status(TransferResponseDto.Status.SUCCESSFUL)
+                            .type(TransferResponseDto.Type.BANK_ACCOUNT)
                             .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
                             .narration("Salary payment")
                             .build()
                     )
                     .meta(
-                        TransferListResponse.Data.Meta.builder()
+                        PaginationMetaDto.builder()
                             .currentPage(1.0)
                             .pageCount(3.0)
                             .perPage(50.0)
@@ -101,13 +102,13 @@ internal class TransferListResponseTest {
                 .data(
                     TransferListResponse.Data.builder()
                         .addData(
-                            TransferListResponse.Data.InnerData.builder()
+                            TransferResponseDto.builder()
                                 .id("txn-001")
                                 .amount(1000.0)
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                                 .currency("ZMW")
                                 .recipient(
-                                    TransferListResponse.Data.InnerData.Recipient.builder()
+                                    TransferRecipientDto.builder()
                                         .accountName("JOHN DOE")
                                         .accountNumber("1234567890")
                                         .bankName("Zambia National Commercial Bank")
@@ -116,14 +117,14 @@ internal class TransferListResponseTest {
                                         .build()
                                 )
                                 .reference("payout-12345")
-                                .status(TransferListResponse.Data.InnerData.Status.SUCCESSFUL)
-                                .type(TransferListResponse.Data.InnerData.Type.BANK_ACCOUNT)
+                                .status(TransferResponseDto.Status.SUCCESSFUL)
+                                .type(TransferResponseDto.Type.BANK_ACCOUNT)
                                 .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
                                 .narration("Salary payment")
                                 .build()
                         )
                         .meta(
-                            TransferListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)

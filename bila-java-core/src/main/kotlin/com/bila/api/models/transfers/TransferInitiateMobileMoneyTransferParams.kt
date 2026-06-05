@@ -927,15 +927,12 @@ private constructor(
 
             @JvmField val ZM = of("zm")
 
-            @JvmField val NG = of("ng")
-
             @JvmStatic fun of(value: String) = Country(JsonField.of(value))
         }
 
         /** An enum containing [Country]'s known values. */
         enum class Known {
-            ZM,
-            NG,
+            ZM
         }
 
         /**
@@ -949,7 +946,6 @@ private constructor(
          */
         enum class Value {
             ZM,
-            NG,
             /** An enum member indicating that [Country] was instantiated with an unknown value. */
             _UNKNOWN,
         }
@@ -964,7 +960,6 @@ private constructor(
         fun value(): Value =
             when (this) {
                 ZM -> Value.ZM
-                NG -> Value.NG
                 else -> Value._UNKNOWN
             }
 
@@ -979,7 +974,6 @@ private constructor(
         fun known(): Known =
             when (this) {
                 ZM -> Known.ZM
-                NG -> Known.NG
                 else -> throw BilaInvalidDataException("Unknown Country: $value")
             }
 
@@ -1065,8 +1059,6 @@ private constructor(
 
             @JvmField val ZAMTEL = of("zamtel")
 
-            @JvmField val VODACOM = of("vodacom")
-
             @JvmStatic fun of(value: String) = Operator(JsonField.of(value))
         }
 
@@ -1075,7 +1067,6 @@ private constructor(
             AIRTEL,
             MTN,
             ZAMTEL,
-            VODACOM,
         }
 
         /**
@@ -1091,7 +1082,6 @@ private constructor(
             AIRTEL,
             MTN,
             ZAMTEL,
-            VODACOM,
             /** An enum member indicating that [Operator] was instantiated with an unknown value. */
             _UNKNOWN,
         }
@@ -1108,7 +1098,6 @@ private constructor(
                 AIRTEL -> Value.AIRTEL
                 MTN -> Value.MTN
                 ZAMTEL -> Value.ZAMTEL
-                VODACOM -> Value.VODACOM
                 else -> Value._UNKNOWN
             }
 
@@ -1125,7 +1114,6 @@ private constructor(
                 AIRTEL -> Known.AIRTEL
                 MTN -> Known.MTN
                 ZAMTEL -> Known.ZAMTEL
-                VODACOM -> Known.VODACOM
                 else -> throw BilaInvalidDataException("Unknown Operator: $value")
             }
 

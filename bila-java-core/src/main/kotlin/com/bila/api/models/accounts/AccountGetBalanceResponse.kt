@@ -33,9 +33,6 @@ private constructor(
         @JsonProperty("data") @ExcludeMissing data: JsonField<Data> = JsonMissing.of(),
     ) : this(message, status, data, mutableMapOf())
 
-    fun toBilaResponse(): BilaResponse =
-        BilaResponse.builder().message(message).status(status).build()
-
     /**
      * Response message
      *

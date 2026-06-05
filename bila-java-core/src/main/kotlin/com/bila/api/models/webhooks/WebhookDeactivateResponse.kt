@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless.
 
-package com.bila.api.models.accounts
+package com.bila.api.models.webhooks
 
 import com.bila.api.core.ExcludeMissing
 import com.bila.api.core.JsonField
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.Collections
 import java.util.Objects
 
-class BilaResponse
+class WebhookDeactivateResponse
 @JsonCreator(mode = JsonCreator.Mode.DISABLED)
 private constructor(
     private val message: JsonField<String>,
@@ -74,7 +74,7 @@ private constructor(
     companion object {
 
         /**
-         * Returns a mutable builder for constructing an instance of [BilaResponse].
+         * Returns a mutable builder for constructing an instance of [WebhookDeactivateResponse].
          *
          * The following fields are required:
          * ```java
@@ -85,7 +85,7 @@ private constructor(
         @JvmStatic fun builder() = Builder()
     }
 
-    /** A builder for [BilaResponse]. */
+    /** A builder for [WebhookDeactivateResponse]. */
     class Builder internal constructor() {
 
         private var message: JsonField<String>? = null
@@ -93,10 +93,10 @@ private constructor(
         private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
         @JvmSynthetic
-        internal fun from(bilaResponse: BilaResponse) = apply {
-            message = bilaResponse.message
-            status = bilaResponse.status
-            additionalProperties = bilaResponse.additionalProperties.toMutableMap()
+        internal fun from(webhookDeactivateResponse: WebhookDeactivateResponse) = apply {
+            message = webhookDeactivateResponse.message
+            status = webhookDeactivateResponse.status
+            additionalProperties = webhookDeactivateResponse.additionalProperties.toMutableMap()
         }
 
         /** Response message */
@@ -141,7 +141,7 @@ private constructor(
         }
 
         /**
-         * Returns an immutable instance of [BilaResponse].
+         * Returns an immutable instance of [WebhookDeactivateResponse].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
          *
@@ -153,8 +153,8 @@ private constructor(
          *
          * @throws IllegalStateException if any required field is unset.
          */
-        fun build(): BilaResponse =
-            BilaResponse(
+        fun build(): WebhookDeactivateResponse =
+            WebhookDeactivateResponse(
                 checkRequired("message", message),
                 checkRequired("status", status),
                 additionalProperties.toMutableMap(),
@@ -171,7 +171,7 @@ private constructor(
      * @throws BilaInvalidDataException if any value type in this object doesn't match its expected
      *   type.
      */
-    fun validate(): BilaResponse = apply {
+    fun validate(): WebhookDeactivateResponse = apply {
         if (validated) {
             return@apply
         }
@@ -203,7 +203,7 @@ private constructor(
             return true
         }
 
-        return other is BilaResponse &&
+        return other is WebhookDeactivateResponse &&
             message == other.message &&
             status == other.status &&
             additionalProperties == other.additionalProperties
@@ -214,5 +214,5 @@ private constructor(
     override fun hashCode(): Int = hashCode
 
     override fun toString() =
-        "BilaResponse{message=$message, status=$status, additionalProperties=$additionalProperties}"
+        "WebhookDeactivateResponse{message=$message, status=$status, additionalProperties=$additionalProperties}"
 }

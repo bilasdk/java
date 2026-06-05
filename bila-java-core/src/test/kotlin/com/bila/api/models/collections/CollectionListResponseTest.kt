@@ -3,6 +3,7 @@
 package com.bila.api.models.collections
 
 import com.bila.api.core.jsonMapper
+import com.bila.api.models.PaginationMetaDto
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import java.time.OffsetDateTime
 import org.assertj.core.api.Assertions.assertThat
@@ -19,27 +20,27 @@ internal class CollectionListResponseTest {
                 .data(
                     CollectionListResponse.Data.builder()
                         .addData(
-                            CollectionListResponse.Data.InnerData.builder()
+                            BilaCollectionResponseDto.builder()
                                 .id("col-001")
                                 .amount(100.0)
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                                 .currency("ZMW")
                                 .customer(
-                                    CollectionListResponse.Data.InnerData.Customer.builder()
+                                    BilaCollectionCustomerDto.builder()
                                         .name("JOHN DOE")
                                         .operator("airtel")
                                         .phone("0977123456")
                                         .build()
                                 )
                                 .reference("order-12345")
-                                .status(CollectionListResponse.Data.InnerData.Status.SUCCESSFUL)
+                                .status(BilaCollectionResponseDto.Status.PENDING)
                                 .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
-                                .feeBearer(CollectionListResponse.Data.InnerData.FeeBearer.MERCHANT)
+                                .feeBearer(BilaCollectionResponseDto.FeeBearer.MERCHANT)
                                 .narration("Payment for Order #12345")
                                 .build()
                         )
                         .meta(
-                            CollectionListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)
@@ -56,27 +57,27 @@ internal class CollectionListResponseTest {
             .contains(
                 CollectionListResponse.Data.builder()
                     .addData(
-                        CollectionListResponse.Data.InnerData.builder()
+                        BilaCollectionResponseDto.builder()
                             .id("col-001")
                             .amount(100.0)
                             .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                             .currency("ZMW")
                             .customer(
-                                CollectionListResponse.Data.InnerData.Customer.builder()
+                                BilaCollectionCustomerDto.builder()
                                     .name("JOHN DOE")
                                     .operator("airtel")
                                     .phone("0977123456")
                                     .build()
                             )
                             .reference("order-12345")
-                            .status(CollectionListResponse.Data.InnerData.Status.SUCCESSFUL)
+                            .status(BilaCollectionResponseDto.Status.PENDING)
                             .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
-                            .feeBearer(CollectionListResponse.Data.InnerData.FeeBearer.MERCHANT)
+                            .feeBearer(BilaCollectionResponseDto.FeeBearer.MERCHANT)
                             .narration("Payment for Order #12345")
                             .build()
                     )
                     .meta(
-                        CollectionListResponse.Data.Meta.builder()
+                        PaginationMetaDto.builder()
                             .currentPage(1.0)
                             .pageCount(3.0)
                             .perPage(50.0)
@@ -97,27 +98,27 @@ internal class CollectionListResponseTest {
                 .data(
                     CollectionListResponse.Data.builder()
                         .addData(
-                            CollectionListResponse.Data.InnerData.builder()
+                            BilaCollectionResponseDto.builder()
                                 .id("col-001")
                                 .amount(100.0)
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                                 .currency("ZMW")
                                 .customer(
-                                    CollectionListResponse.Data.InnerData.Customer.builder()
+                                    BilaCollectionCustomerDto.builder()
                                         .name("JOHN DOE")
                                         .operator("airtel")
                                         .phone("0977123456")
                                         .build()
                                 )
                                 .reference("order-12345")
-                                .status(CollectionListResponse.Data.InnerData.Status.SUCCESSFUL)
+                                .status(BilaCollectionResponseDto.Status.PENDING)
                                 .completedAt(OffsetDateTime.parse("2024-01-15T10:31:00Z"))
-                                .feeBearer(CollectionListResponse.Data.InnerData.FeeBearer.MERCHANT)
+                                .feeBearer(BilaCollectionResponseDto.FeeBearer.MERCHANT)
                                 .narration("Payment for Order #12345")
                                 .build()
                         )
                         .meta(
-                            CollectionListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)
