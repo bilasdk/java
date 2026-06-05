@@ -8,8 +8,8 @@ repositories {
 }
 
 allprojects {
-    group = "com.bila.api"
-    version = "0.0.2" // x-release-please-version
+    group = "com.usebila.api"
+    version = "0.1.0" // x-release-please-version
 }
 
 subprojects {
