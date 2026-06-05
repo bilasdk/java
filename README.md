@@ -1,4 +1,4 @@
-# Bila Java API Library
+# Bila JVM API Library
 
 <!-- x-release-please-start-version -->
 
@@ -7,7 +7,7 @@
 
 <!-- x-release-please-end -->
 
-The Bila Java SDK provides convenient access to the Bila REST API from applications written in Java.
+The Bila JVM SDK provides convenient access to the Bila REST API from applications written in Java or Kotlin.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -51,11 +51,44 @@ import com.usebila.api.client.okhttp.BilaOkHttpClient;
 import com.usebila.api.models.accounts.AccountListParams;
 import com.usebila.api.models.accounts.AccountListResponse;
 
-// Configures using the `bila.apiKey` and `bila.baseUrl` system properties
-// Or configures using the `BILA_API_KEY` and `BILA_BASE_URL` environment variables
-BilaClient client = BilaOkHttpClient.fromEnv();
+String apiKey = System.getenv("BILA_API_KEY");
 
-AccountListResponse accounts = client.accounts().list();
+BilaClient client = BilaOkHttpClient.builder()
+    .apiKey(apiKey)
+    .sandbox()
+    .build();
+
+AccountListResponse accounts = client.accounts().list(
+    AccountListParams.builder().page(1.0).perPage(50.0).build()
+);
+```
+
+## Examples
+
+Runnable examples live in the [bila-java-example](./bila-java-example/) module. Each file demonstrates a specific area of the API:
+
+| Example | Description |
+| ----------------------------------------------------------- | ---------------------------------------------------- |
+| [AccountsExample.java](./bila-java-example/src/main/java/com/bila/api/example/AccountsExample.java) | Retrieve accounts, list accounts, and check balances |
+| [BanksExample.java](./bila-java-example/src/main/java/com/bila/api/example/BanksExample.java) | List supported banks and financial institutions |
+| [CollectionsExample.java](./bila-java-example/src/main/java/com/bila/api/example/CollectionsExample.java) | Collect payments via mobile money |
+| [ResolveExample.java](./bila-java-example/src/main/java/com/bila/api/example/ResolveExample.java) | Verify bank account and mobile money details |
+| [TransactionsExample.java](./bila-java-example/src/main/java/com/bila/api/example/TransactionsExample.java) | Retrieve and list transaction history |
+| [TransferRecipientsExample.java](./bila-java-example/src/main/java/com/bila/api/example/TransferRecipientsExample.java) | Manage payout recipients |
+| [TransfersExample.java](./bila-java-example/src/main/java/com/bila/api/example/TransfersExample.java) | Send payouts via bank transfer and mobile money |
+| [WebhooksExample.java](./bila-java-example/src/main/java/com/bila/api/example/WebhooksExample.java) | Configure webhooks and manage delivery history |
+
+To run an example from this repository:
+
+```sh
+export BILA_API_KEY=sk_test_your_api_key_here
+./gradlew :bila-java-example:run -Pexample=Accounts
+```
+
+Replace `Accounts` with any example name from the table above (for example, `Transfers` or `Webhooks`). Run without `-Pexample` to print usage instructions:
+
+```sh
+./gradlew :bila-java-example:run
 ```
 
 ## Client configuration
