@@ -11,7 +11,7 @@ import com.bila.api.core.checkKnown
 import com.bila.api.core.checkRequired
 import com.bila.api.core.toImmutable
 import com.bila.api.errors.BilaInvalidDataException
-import com.bila.api.models.accounts.BilaResponse
+import com.bila.api.models.PaginationMetaDto
 import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonCreator
@@ -37,9 +37,6 @@ private constructor(
         @JsonProperty("status") @ExcludeMissing status: JsonField<Boolean> = JsonMissing.of(),
         @JsonProperty("data") @ExcludeMissing data: JsonField<Data> = JsonMissing.of(),
     ) : this(message, status, data, mutableMapOf())
-
-    fun toBilaResponse(): BilaResponse =
-        BilaResponse.builder().message(message).status(status).build()
 
     /**
      * Response message
@@ -243,7 +240,7 @@ private constructor(
     @JsonCreator(mode = JsonCreator.Mode.DISABLED)
     private constructor(
         private val data: JsonField<List<InnerData>>,
-        private val meta: JsonField<Meta>,
+        private val meta: JsonField<PaginationMetaDto>,
         private val additionalProperties: MutableMap<String, JsonValue>,
     ) {
 
@@ -252,7 +249,9 @@ private constructor(
             @JsonProperty("data")
             @ExcludeMissing
             data: JsonField<List<InnerData>> = JsonMissing.of(),
-            @JsonProperty("meta") @ExcludeMissing meta: JsonField<Meta> = JsonMissing.of(),
+            @JsonProperty("meta")
+            @ExcludeMissing
+            meta: JsonField<PaginationMetaDto> = JsonMissing.of(),
         ) : this(data, meta, mutableMapOf())
 
         /**
@@ -269,7 +268,7 @@ private constructor(
          * @throws BilaInvalidDataException if the JSON field has an unexpected type or is
          *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
          */
-        fun meta(): Meta = meta.getRequired("meta")
+        fun meta(): PaginationMetaDto = meta.getRequired("meta")
 
         /**
          * Returns the raw JSON value of [data].
@@ -283,7 +282,7 @@ private constructor(
          *
          * Unlike [meta], this method doesn't throw if the JSON field has an unexpected type.
          */
-        @JsonProperty("meta") @ExcludeMissing fun _meta(): JsonField<Meta> = meta
+        @JsonProperty("meta") @ExcludeMissing fun _meta(): JsonField<PaginationMetaDto> = meta
 
         @JsonAnySetter
         private fun putAdditionalProperty(key: String, value: JsonValue) {
@@ -315,7 +314,7 @@ private constructor(
         class Builder internal constructor() {
 
             private var data: JsonField<MutableList<InnerData>>? = null
-            private var meta: JsonField<Meta>? = null
+            private var meta: JsonField<PaginationMetaDto>? = null
             private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
 
             @JvmSynthetic
@@ -352,16 +351,16 @@ private constructor(
             }
 
             /** Pagination metadata */
-            fun meta(meta: Meta) = meta(JsonField.of(meta))
+            fun meta(meta: PaginationMetaDto) = meta(JsonField.of(meta))
 
             /**
              * Sets [Builder.meta] to an arbitrary JSON value.
              *
-             * You should usually call [Builder.meta] with a well-typed [Meta] value instead. This
-             * method is primarily for setting the field to an undocumented or not yet supported
-             * value.
+             * You should usually call [Builder.meta] with a well-typed [PaginationMetaDto] value
+             * instead. This method is primarily for setting the field to an undocumented or not yet
+             * supported value.
              */
-            fun meta(meta: JsonField<Meta>) = apply { this.meta = meta }
+            fun meta(meta: JsonField<PaginationMetaDto>) = apply { this.meta = meta }
 
             fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
                 this.additionalProperties.clear()
@@ -1467,312 +1466,6 @@ private constructor(
 
             override fun toString() =
                 "InnerData{id=$id, attempts=$attempts, createdAt=$createdAt, deliveredAt=$deliveredAt, eventType=$eventType, failedAt=$failedAt, maxAttempts=$maxAttempts, nextRetryAt=$nextRetryAt, payload=$payload, responseBody=$responseBody, responseStatus=$responseStatus, status=$status, webhookConfigId=$webhookConfigId, additionalProperties=$additionalProperties}"
-        }
-
-        /** Pagination metadata */
-        class Meta
-        @JsonCreator(mode = JsonCreator.Mode.DISABLED)
-        private constructor(
-            private val currentPage: JsonField<Double>,
-            private val pageCount: JsonField<Double>,
-            private val perPage: JsonField<Double>,
-            private val total: JsonField<Double>,
-            private val additionalProperties: MutableMap<String, JsonValue>,
-        ) {
-
-            @JsonCreator
-            private constructor(
-                @JsonProperty("currentPage")
-                @ExcludeMissing
-                currentPage: JsonField<Double> = JsonMissing.of(),
-                @JsonProperty("pageCount")
-                @ExcludeMissing
-                pageCount: JsonField<Double> = JsonMissing.of(),
-                @JsonProperty("perPage")
-                @ExcludeMissing
-                perPage: JsonField<Double> = JsonMissing.of(),
-                @JsonProperty("total") @ExcludeMissing total: JsonField<Double> = JsonMissing.of(),
-            ) : this(currentPage, pageCount, perPage, total, mutableMapOf())
-
-            /**
-             * Current page number
-             *
-             * @throws BilaInvalidDataException if the JSON field has an unexpected type or is
-             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
-             *   value).
-             */
-            fun currentPage(): Double = currentPage.getRequired("currentPage")
-
-            /**
-             * Total number of pages
-             *
-             * @throws BilaInvalidDataException if the JSON field has an unexpected type or is
-             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
-             *   value).
-             */
-            fun pageCount(): Double = pageCount.getRequired("pageCount")
-
-            /**
-             * Items per page
-             *
-             * @throws BilaInvalidDataException if the JSON field has an unexpected type or is
-             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
-             *   value).
-             */
-            fun perPage(): Double = perPage.getRequired("perPage")
-
-            /**
-             * Total number of records
-             *
-             * @throws BilaInvalidDataException if the JSON field has an unexpected type or is
-             *   unexpectedly missing or null (e.g. if the server responded with an unexpected
-             *   value).
-             */
-            fun total(): Double = total.getRequired("total")
-
-            /**
-             * Returns the raw JSON value of [currentPage].
-             *
-             * Unlike [currentPage], this method doesn't throw if the JSON field has an unexpected
-             * type.
-             */
-            @JsonProperty("currentPage")
-            @ExcludeMissing
-            fun _currentPage(): JsonField<Double> = currentPage
-
-            /**
-             * Returns the raw JSON value of [pageCount].
-             *
-             * Unlike [pageCount], this method doesn't throw if the JSON field has an unexpected
-             * type.
-             */
-            @JsonProperty("pageCount")
-            @ExcludeMissing
-            fun _pageCount(): JsonField<Double> = pageCount
-
-            /**
-             * Returns the raw JSON value of [perPage].
-             *
-             * Unlike [perPage], this method doesn't throw if the JSON field has an unexpected type.
-             */
-            @JsonProperty("perPage") @ExcludeMissing fun _perPage(): JsonField<Double> = perPage
-
-            /**
-             * Returns the raw JSON value of [total].
-             *
-             * Unlike [total], this method doesn't throw if the JSON field has an unexpected type.
-             */
-            @JsonProperty("total") @ExcludeMissing fun _total(): JsonField<Double> = total
-
-            @JsonAnySetter
-            private fun putAdditionalProperty(key: String, value: JsonValue) {
-                additionalProperties.put(key, value)
-            }
-
-            @JsonAnyGetter
-            @ExcludeMissing
-            fun _additionalProperties(): Map<String, JsonValue> =
-                Collections.unmodifiableMap(additionalProperties)
-
-            fun toBuilder() = Builder().from(this)
-
-            companion object {
-
-                /**
-                 * Returns a mutable builder for constructing an instance of [Meta].
-                 *
-                 * The following fields are required:
-                 * ```java
-                 * .currentPage()
-                 * .pageCount()
-                 * .perPage()
-                 * .total()
-                 * ```
-                 */
-                @JvmStatic fun builder() = Builder()
-            }
-
-            /** A builder for [Meta]. */
-            class Builder internal constructor() {
-
-                private var currentPage: JsonField<Double>? = null
-                private var pageCount: JsonField<Double>? = null
-                private var perPage: JsonField<Double>? = null
-                private var total: JsonField<Double>? = null
-                private var additionalProperties: MutableMap<String, JsonValue> = mutableMapOf()
-
-                @JvmSynthetic
-                internal fun from(meta: Meta) = apply {
-                    currentPage = meta.currentPage
-                    pageCount = meta.pageCount
-                    perPage = meta.perPage
-                    total = meta.total
-                    additionalProperties = meta.additionalProperties.toMutableMap()
-                }
-
-                /** Current page number */
-                fun currentPage(currentPage: Double) = currentPage(JsonField.of(currentPage))
-
-                /**
-                 * Sets [Builder.currentPage] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.currentPage] with a well-typed [Double] value
-                 * instead. This method is primarily for setting the field to an undocumented or not
-                 * yet supported value.
-                 */
-                fun currentPage(currentPage: JsonField<Double>) = apply {
-                    this.currentPage = currentPage
-                }
-
-                /** Total number of pages */
-                fun pageCount(pageCount: Double) = pageCount(JsonField.of(pageCount))
-
-                /**
-                 * Sets [Builder.pageCount] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.pageCount] with a well-typed [Double] value
-                 * instead. This method is primarily for setting the field to an undocumented or not
-                 * yet supported value.
-                 */
-                fun pageCount(pageCount: JsonField<Double>) = apply { this.pageCount = pageCount }
-
-                /** Items per page */
-                fun perPage(perPage: Double) = perPage(JsonField.of(perPage))
-
-                /**
-                 * Sets [Builder.perPage] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.perPage] with a well-typed [Double] value
-                 * instead. This method is primarily for setting the field to an undocumented or not
-                 * yet supported value.
-                 */
-                fun perPage(perPage: JsonField<Double>) = apply { this.perPage = perPage }
-
-                /** Total number of records */
-                fun total(total: Double) = total(JsonField.of(total))
-
-                /**
-                 * Sets [Builder.total] to an arbitrary JSON value.
-                 *
-                 * You should usually call [Builder.total] with a well-typed [Double] value instead.
-                 * This method is primarily for setting the field to an undocumented or not yet
-                 * supported value.
-                 */
-                fun total(total: JsonField<Double>) = apply { this.total = total }
-
-                fun additionalProperties(additionalProperties: Map<String, JsonValue>) = apply {
-                    this.additionalProperties.clear()
-                    putAllAdditionalProperties(additionalProperties)
-                }
-
-                fun putAdditionalProperty(key: String, value: JsonValue) = apply {
-                    additionalProperties.put(key, value)
-                }
-
-                fun putAllAdditionalProperties(additionalProperties: Map<String, JsonValue>) =
-                    apply {
-                        this.additionalProperties.putAll(additionalProperties)
-                    }
-
-                fun removeAdditionalProperty(key: String) = apply {
-                    additionalProperties.remove(key)
-                }
-
-                fun removeAllAdditionalProperties(keys: Set<String>) = apply {
-                    keys.forEach(::removeAdditionalProperty)
-                }
-
-                /**
-                 * Returns an immutable instance of [Meta].
-                 *
-                 * Further updates to this [Builder] will not mutate the returned instance.
-                 *
-                 * The following fields are required:
-                 * ```java
-                 * .currentPage()
-                 * .pageCount()
-                 * .perPage()
-                 * .total()
-                 * ```
-                 *
-                 * @throws IllegalStateException if any required field is unset.
-                 */
-                fun build(): Meta =
-                    Meta(
-                        checkRequired("currentPage", currentPage),
-                        checkRequired("pageCount", pageCount),
-                        checkRequired("perPage", perPage),
-                        checkRequired("total", total),
-                        additionalProperties.toMutableMap(),
-                    )
-            }
-
-            private var validated: Boolean = false
-
-            /**
-             * Validates that the types of all values in this object match their expected types
-             * recursively.
-             *
-             * This method is _not_ forwards compatible with new types from the API for existing
-             * fields.
-             *
-             * @throws BilaInvalidDataException if any value type in this object doesn't match its
-             *   expected type.
-             */
-            fun validate(): Meta = apply {
-                if (validated) {
-                    return@apply
-                }
-
-                currentPage()
-                pageCount()
-                perPage()
-                total()
-                validated = true
-            }
-
-            fun isValid(): Boolean =
-                try {
-                    validate()
-                    true
-                } catch (e: BilaInvalidDataException) {
-                    false
-                }
-
-            /**
-             * Returns a score indicating how many valid values are contained in this object
-             * recursively.
-             *
-             * Used for best match union deserialization.
-             */
-            @JvmSynthetic
-            internal fun validity(): Int =
-                (if (currentPage.asKnown().isPresent) 1 else 0) +
-                    (if (pageCount.asKnown().isPresent) 1 else 0) +
-                    (if (perPage.asKnown().isPresent) 1 else 0) +
-                    (if (total.asKnown().isPresent) 1 else 0)
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) {
-                    return true
-                }
-
-                return other is Meta &&
-                    currentPage == other.currentPage &&
-                    pageCount == other.pageCount &&
-                    perPage == other.perPage &&
-                    total == other.total &&
-                    additionalProperties == other.additionalProperties
-            }
-
-            private val hashCode: Int by lazy {
-                Objects.hash(currentPage, pageCount, perPage, total, additionalProperties)
-            }
-
-            override fun hashCode(): Int = hashCode
-
-            override fun toString() =
-                "Meta{currentPage=$currentPage, pageCount=$pageCount, perPage=$perPage, total=$total, additionalProperties=$additionalProperties}"
         }
 
         override fun equals(other: Any?): Boolean {

@@ -4,6 +4,7 @@ package com.bila.api.models.webhooks
 
 import com.bila.api.core.JsonValue
 import com.bila.api.core.jsonMapper
+import com.bila.api.models.PaginationMetaDto
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import java.time.OffsetDateTime
 import org.assertj.core.api.Assertions.assertThat
@@ -49,7 +50,7 @@ internal class WebhookGetDeliveriesResponseTest {
                                 .build()
                         )
                         .meta(
-                            WebhookGetDeliveriesResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)
@@ -91,7 +92,7 @@ internal class WebhookGetDeliveriesResponseTest {
                             .build()
                     )
                     .meta(
-                        WebhookGetDeliveriesResponse.Data.Meta.builder()
+                        PaginationMetaDto.builder()
                             .currentPage(1.0)
                             .pageCount(3.0)
                             .perPage(50.0)
@@ -141,7 +142,7 @@ internal class WebhookGetDeliveriesResponseTest {
                                 .build()
                         )
                         .meta(
-                            WebhookGetDeliveriesResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)

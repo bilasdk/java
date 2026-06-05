@@ -16,7 +16,7 @@ internal class ResolveMobileMoneyResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .data(
-                    ResolveMobileMoneyResponse.Data.builder()
+                    ResolvedAccountResponseDto.builder()
                         .accountName("John Doe")
                         .country("zm")
                         .accountNumber("1234567890")
@@ -33,7 +33,7 @@ internal class ResolveMobileMoneyResponseTest {
         assertThat(resolveMobileMoneyResponse.status()).isEqualTo(true)
         assertThat(resolveMobileMoneyResponse.data())
             .contains(
-                ResolveMobileMoneyResponse.Data.builder()
+                ResolvedAccountResponseDto.builder()
                     .accountName("John Doe")
                     .country("zm")
                     .accountNumber("1234567890")
@@ -53,7 +53,7 @@ internal class ResolveMobileMoneyResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .data(
-                    ResolveMobileMoneyResponse.Data.builder()
+                    ResolvedAccountResponseDto.builder()
                         .accountName("John Doe")
                         .country("zm")
                         .accountNumber("1234567890")

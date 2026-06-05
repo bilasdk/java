@@ -66,9 +66,9 @@ internal class WebhookServiceTest {
         val client = BilaOkHttpClient.builder().apiKey("My API Key").build()
         val webhookService = client.webhooks()
 
-        val bilaResponse = webhookService.deactivate("68f11209-451f-4a15-bfcd-d916eb8b09f4")
+        val response = webhookService.deactivate("68f11209-451f-4a15-bfcd-d916eb8b09f4")
 
-        bilaResponse.validate()
+        response.validate()
     }
 
     @Disabled("Mock server tests are disabled")

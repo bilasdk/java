@@ -4,7 +4,7 @@ package com.bila.api.proguard
 
 import com.bila.api.client.okhttp.BilaOkHttpClient
 import com.bila.api.core.jsonMapper
-import com.bila.api.models.accounts.BilaResponse
+import com.bila.api.models.accounts.AccountDetailsDto
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import kotlin.reflect.full.memberFunctions
 import kotlin.reflect.jvm.javaMethod
@@ -58,17 +58,21 @@ internal class ProGuardCompatibilityTest {
     }
 
     @Test
-    fun bilaResponseRoundtrip() {
+    fun accountDetailsDtoRoundtrip() {
         val jsonMapper = jsonMapper()
-        val bilaResponse =
-            BilaResponse.builder().message("Operation completed successfully").status(true).build()
+        val accountDetailsDto =
+            AccountDetailsDto.builder()
+                .accountName("John Doe")
+                .type("bank-account")
+                .tillNumber("123456")
+                .build()
 
-        val roundtrippedBilaResponse =
+        val roundtrippedAccountDetailsDto =
             jsonMapper.readValue(
-                jsonMapper.writeValueAsString(bilaResponse),
-                jacksonTypeRef<BilaResponse>(),
+                jsonMapper.writeValueAsString(accountDetailsDto),
+                jacksonTypeRef<AccountDetailsDto>(),
             )
 
-        assertThat(roundtrippedBilaResponse).isEqualTo(bilaResponse)
+        assertThat(roundtrippedAccountDetailsDto).isEqualTo(accountDetailsDto)
     }
 }

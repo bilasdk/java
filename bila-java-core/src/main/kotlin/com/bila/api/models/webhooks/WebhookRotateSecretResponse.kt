@@ -8,7 +8,6 @@ import com.bila.api.core.JsonMissing
 import com.bila.api.core.JsonValue
 import com.bila.api.core.checkRequired
 import com.bila.api.errors.BilaInvalidDataException
-import com.bila.api.models.accounts.BilaResponse
 import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonCreator
@@ -33,9 +32,6 @@ private constructor(
         @JsonProperty("status") @ExcludeMissing status: JsonField<Boolean> = JsonMissing.of(),
         @JsonProperty("data") @ExcludeMissing data: JsonField<Data> = JsonMissing.of(),
     ) : this(message, status, data, mutableMapOf())
-
-    fun toBilaResponse(): BilaResponse =
-        BilaResponse.builder().message(message).status(status).build()
 
     /**
      * Response message

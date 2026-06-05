@@ -3,6 +3,7 @@
 package com.bila.api.models.transactions
 
 import com.bila.api.core.jsonMapper
+import com.bila.api.models.PaginationMetaDto
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import java.time.OffsetDateTime
 import org.assertj.core.api.Assertions.assertThat
@@ -19,7 +20,7 @@ internal class TransactionListResponseTest {
                 .data(
                     TransactionListResponse.Data.builder()
                         .addData(
-                            TransactionListResponse.Data.InnerData.builder()
+                            TransactionResponseDto.builder()
                                 .id("txn-001")
                                 .accountId("acc-001")
                                 .amount(1000.0)
@@ -27,14 +28,14 @@ internal class TransactionListResponseTest {
                                 .balanceBefore(5000.0)
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                                 .currency("ZMW")
-                                .status(TransactionListResponse.Data.InnerData.Status.SUCCESSFUL)
-                                .type(TransactionListResponse.Data.InnerData.Type.CREDIT)
+                                .status(TransactionResponseDto.Status.SUCCESSFUL)
+                                .type(TransactionResponseDto.Type.CREDIT)
                                 .description("Mobile money collection")
                                 .reference("order-12345")
                                 .build()
                         )
                         .meta(
-                            TransactionListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)
@@ -51,7 +52,7 @@ internal class TransactionListResponseTest {
             .contains(
                 TransactionListResponse.Data.builder()
                     .addData(
-                        TransactionListResponse.Data.InnerData.builder()
+                        TransactionResponseDto.builder()
                             .id("txn-001")
                             .accountId("acc-001")
                             .amount(1000.0)
@@ -59,14 +60,14 @@ internal class TransactionListResponseTest {
                             .balanceBefore(5000.0)
                             .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                             .currency("ZMW")
-                            .status(TransactionListResponse.Data.InnerData.Status.SUCCESSFUL)
-                            .type(TransactionListResponse.Data.InnerData.Type.CREDIT)
+                            .status(TransactionResponseDto.Status.SUCCESSFUL)
+                            .type(TransactionResponseDto.Type.CREDIT)
                             .description("Mobile money collection")
                             .reference("order-12345")
                             .build()
                     )
                     .meta(
-                        TransactionListResponse.Data.Meta.builder()
+                        PaginationMetaDto.builder()
                             .currentPage(1.0)
                             .pageCount(3.0)
                             .perPage(50.0)
@@ -87,7 +88,7 @@ internal class TransactionListResponseTest {
                 .data(
                     TransactionListResponse.Data.builder()
                         .addData(
-                            TransactionListResponse.Data.InnerData.builder()
+                            TransactionResponseDto.builder()
                                 .id("txn-001")
                                 .accountId("acc-001")
                                 .amount(1000.0)
@@ -95,14 +96,14 @@ internal class TransactionListResponseTest {
                                 .balanceBefore(5000.0)
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
                                 .currency("ZMW")
-                                .status(TransactionListResponse.Data.InnerData.Status.SUCCESSFUL)
-                                .type(TransactionListResponse.Data.InnerData.Type.CREDIT)
+                                .status(TransactionResponseDto.Status.SUCCESSFUL)
+                                .type(TransactionResponseDto.Type.CREDIT)
                                 .description("Mobile money collection")
                                 .reference("order-12345")
                                 .build()
                         )
                         .meta(
-                            TransactionListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)

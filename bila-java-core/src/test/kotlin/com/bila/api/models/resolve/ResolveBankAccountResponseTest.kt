@@ -16,7 +16,7 @@ internal class ResolveBankAccountResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .data(
-                    ResolveBankAccountResponse.Data.builder()
+                    ResolvedAccountResponseDto.builder()
                         .accountName("John Doe")
                         .country("zm")
                         .accountNumber("1234567890")
@@ -33,7 +33,7 @@ internal class ResolveBankAccountResponseTest {
         assertThat(resolveBankAccountResponse.status()).isEqualTo(true)
         assertThat(resolveBankAccountResponse.data())
             .contains(
-                ResolveBankAccountResponse.Data.builder()
+                ResolvedAccountResponseDto.builder()
                     .accountName("John Doe")
                     .country("zm")
                     .accountNumber("1234567890")
@@ -53,7 +53,7 @@ internal class ResolveBankAccountResponseTest {
                 .message("Operation completed successfully")
                 .status(true)
                 .data(
-                    ResolveBankAccountResponse.Data.builder()
+                    ResolvedAccountResponseDto.builder()
                         .accountName("John Doe")
                         .country("zm")
                         .accountNumber("1234567890")

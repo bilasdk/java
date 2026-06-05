@@ -69,11 +69,10 @@ internal class WebhookServiceAsyncTest {
         val client = BilaOkHttpClientAsync.builder().apiKey("My API Key").build()
         val webhookServiceAsync = client.webhooks()
 
-        val bilaResponseFuture =
-            webhookServiceAsync.deactivate("68f11209-451f-4a15-bfcd-d916eb8b09f4")
+        val responseFuture = webhookServiceAsync.deactivate("68f11209-451f-4a15-bfcd-d916eb8b09f4")
 
-        val bilaResponse = bilaResponseFuture.get()
-        bilaResponse.validate()
+        val response = responseFuture.get()
+        response.validate()
     }
 
     @Disabled("Mock server tests are disabled")

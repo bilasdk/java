@@ -68,7 +68,7 @@ internal class CollectionServiceTest {
                     .phone("0977433571")
                     .reference("collection-001")
                     .walletId("68f11209-451f-4a15-bfcd-d916eb8b09f4")
-                    .bearer(CollectionInitiateMobileMoneyCollectionParams.Bearer.CUSTOMER)
+                    .bearer(CollectionInitiateMobileMoneyCollectionParams.Bearer.MERCHANT)
                     .customerName("John Doe")
                     .narration("Payment for subscription")
                     .build()

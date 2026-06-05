@@ -3,6 +3,7 @@
 package com.bila.api.models.transferrecipients
 
 import com.bila.api.core.jsonMapper
+import com.bila.api.models.PaginationMetaDto
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import java.time.OffsetDateTime
 import org.assertj.core.api.Assertions.assertThat
@@ -19,14 +20,12 @@ internal class TransferRecipientListResponseTest {
                 .data(
                     TransferRecipientListResponse.Data.builder()
                         .addData(
-                            TransferRecipientListResponse.Data.InnerData.builder()
+                            RecipientResponseDto.builder()
                                 .id("68f11209-451f-4a15-bfcd-d916eb8b09f4")
                                 .accountName("John Doe")
                                 .country("zm")
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
-                                .type(
-                                    TransferRecipientListResponse.Data.InnerData.Type.BANK_ACCOUNT
-                                )
+                                .type(RecipientResponseDto.Type.BANK_ACCOUNT)
                                 .accountNumber("1234567890")
                                 .bankId("bank-001")
                                 .bankName("Zambia National Commercial Bank")
@@ -35,7 +34,7 @@ internal class TransferRecipientListResponseTest {
                                 .build()
                         )
                         .meta(
-                            TransferRecipientListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)
@@ -53,12 +52,12 @@ internal class TransferRecipientListResponseTest {
             .contains(
                 TransferRecipientListResponse.Data.builder()
                     .addData(
-                        TransferRecipientListResponse.Data.InnerData.builder()
+                        RecipientResponseDto.builder()
                             .id("68f11209-451f-4a15-bfcd-d916eb8b09f4")
                             .accountName("John Doe")
                             .country("zm")
                             .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
-                            .type(TransferRecipientListResponse.Data.InnerData.Type.BANK_ACCOUNT)
+                            .type(RecipientResponseDto.Type.BANK_ACCOUNT)
                             .accountNumber("1234567890")
                             .bankId("bank-001")
                             .bankName("Zambia National Commercial Bank")
@@ -67,7 +66,7 @@ internal class TransferRecipientListResponseTest {
                             .build()
                     )
                     .meta(
-                        TransferRecipientListResponse.Data.Meta.builder()
+                        PaginationMetaDto.builder()
                             .currentPage(1.0)
                             .pageCount(3.0)
                             .perPage(50.0)
@@ -88,14 +87,12 @@ internal class TransferRecipientListResponseTest {
                 .data(
                     TransferRecipientListResponse.Data.builder()
                         .addData(
-                            TransferRecipientListResponse.Data.InnerData.builder()
+                            RecipientResponseDto.builder()
                                 .id("68f11209-451f-4a15-bfcd-d916eb8b09f4")
                                 .accountName("John Doe")
                                 .country("zm")
                                 .createdAt(OffsetDateTime.parse("2024-01-15T10:30:00Z"))
-                                .type(
-                                    TransferRecipientListResponse.Data.InnerData.Type.BANK_ACCOUNT
-                                )
+                                .type(RecipientResponseDto.Type.BANK_ACCOUNT)
                                 .accountNumber("1234567890")
                                 .bankId("bank-001")
                                 .bankName("Zambia National Commercial Bank")
@@ -104,7 +101,7 @@ internal class TransferRecipientListResponseTest {
                                 .build()
                         )
                         .meta(
-                            TransferRecipientListResponse.Data.Meta.builder()
+                            PaginationMetaDto.builder()
                                 .currentPage(1.0)
                                 .pageCount(3.0)
                                 .perPage(50.0)

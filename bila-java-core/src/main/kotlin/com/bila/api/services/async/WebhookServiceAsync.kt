@@ -5,10 +5,10 @@ package com.bila.api.services.async
 import com.bila.api.core.ClientOptions
 import com.bila.api.core.RequestOptions
 import com.bila.api.core.http.HttpResponseFor
-import com.bila.api.models.accounts.BilaResponse
 import com.bila.api.models.webhooks.WebhookCreateParams
 import com.bila.api.models.webhooks.WebhookCreateResponse
 import com.bila.api.models.webhooks.WebhookDeactivateParams
+import com.bila.api.models.webhooks.WebhookDeactivateResponse
 import com.bila.api.models.webhooks.WebhookGetDeliveriesParams
 import com.bila.api.models.webhooks.WebhookGetDeliveriesResponse
 import com.bila.api.models.webhooks.WebhookListEventsParams
@@ -101,7 +101,7 @@ interface WebhookServiceAsync {
         list(WebhookListParams.none(), requestOptions)
 
     /** Deactivate a webhook */
-    fun deactivate(id: String): CompletableFuture<BilaResponse> =
+    fun deactivate(id: String): CompletableFuture<WebhookDeactivateResponse> =
         deactivate(id, WebhookDeactivateParams.none())
 
     /** @see deactivate */
@@ -109,27 +109,30 @@ interface WebhookServiceAsync {
         id: String,
         params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<BilaResponse> =
+    ): CompletableFuture<WebhookDeactivateResponse> =
         deactivate(params.toBuilder().id(id).build(), requestOptions)
 
     /** @see deactivate */
     fun deactivate(
         id: String,
         params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
-    ): CompletableFuture<BilaResponse> = deactivate(id, params, RequestOptions.none())
+    ): CompletableFuture<WebhookDeactivateResponse> = deactivate(id, params, RequestOptions.none())
 
     /** @see deactivate */
     fun deactivate(
         params: WebhookDeactivateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): CompletableFuture<BilaResponse>
+    ): CompletableFuture<WebhookDeactivateResponse>
 
     /** @see deactivate */
-    fun deactivate(params: WebhookDeactivateParams): CompletableFuture<BilaResponse> =
+    fun deactivate(params: WebhookDeactivateParams): CompletableFuture<WebhookDeactivateResponse> =
         deactivate(params, RequestOptions.none())
 
     /** @see deactivate */
-    fun deactivate(id: String, requestOptions: RequestOptions): CompletableFuture<BilaResponse> =
+    fun deactivate(
+        id: String,
+        requestOptions: RequestOptions,
+    ): CompletableFuture<WebhookDeactivateResponse> =
         deactivate(id, WebhookDeactivateParams.none(), requestOptions)
 
     /** Get delivery history */
@@ -325,7 +328,7 @@ interface WebhookServiceAsync {
          * Returns a raw HTTP response for `delete /api/v1/bila/webhooks/{id}`, but is otherwise the
          * same as [WebhookServiceAsync.deactivate].
          */
-        fun deactivate(id: String): CompletableFuture<HttpResponseFor<BilaResponse>> =
+        fun deactivate(id: String): CompletableFuture<HttpResponseFor<WebhookDeactivateResponse>> =
             deactivate(id, WebhookDeactivateParams.none())
 
         /** @see deactivate */
@@ -333,33 +336,33 @@ interface WebhookServiceAsync {
             id: String,
             params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<BilaResponse>> =
+        ): CompletableFuture<HttpResponseFor<WebhookDeactivateResponse>> =
             deactivate(params.toBuilder().id(id).build(), requestOptions)
 
         /** @see deactivate */
         fun deactivate(
             id: String,
             params: WebhookDeactivateParams = WebhookDeactivateParams.none(),
-        ): CompletableFuture<HttpResponseFor<BilaResponse>> =
+        ): CompletableFuture<HttpResponseFor<WebhookDeactivateResponse>> =
             deactivate(id, params, RequestOptions.none())
 
         /** @see deactivate */
         fun deactivate(
             params: WebhookDeactivateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
-        ): CompletableFuture<HttpResponseFor<BilaResponse>>
+        ): CompletableFuture<HttpResponseFor<WebhookDeactivateResponse>>
 
         /** @see deactivate */
         fun deactivate(
             params: WebhookDeactivateParams
-        ): CompletableFuture<HttpResponseFor<BilaResponse>> =
+        ): CompletableFuture<HttpResponseFor<WebhookDeactivateResponse>> =
             deactivate(params, RequestOptions.none())
 
         /** @see deactivate */
         fun deactivate(
             id: String,
             requestOptions: RequestOptions,
-        ): CompletableFuture<HttpResponseFor<BilaResponse>> =
+        ): CompletableFuture<HttpResponseFor<WebhookDeactivateResponse>> =
             deactivate(id, WebhookDeactivateParams.none(), requestOptions)
 
         /**
