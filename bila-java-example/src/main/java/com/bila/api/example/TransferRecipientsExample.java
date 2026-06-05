@@ -1,6 +1,7 @@
 package com.bila.api.example;
 
 import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 import com.usebila.api.models.transferrecipients.TransferRecipientCreateBankAccountParams;
 import com.usebila.api.models.transferrecipients.TransferRecipientCreateBankAccountResponse;
 import com.usebila.api.models.transferrecipients.TransferRecipientCreateMobileMoneyParams;
@@ -30,7 +31,7 @@ public final class TransferRecipientsExample {
     }
 
     private static void run() throws Exception {
-        BilaClient client = Examples.createClient();
+        BilaClient client = createClient();
 
         /********************************************
          * Retrieve transfer recipient
@@ -81,5 +82,14 @@ public final class TransferRecipientsExample {
         TransferRecipientCreateMobileMoneyResponse mobileRecipient =
                 client.transferRecipients().createMobileMoney(mobileParams);
         Examples.printJson("createMobileMoney", mobileRecipient);
+    }
+
+    private static BilaClient createClient() {
+        String apiKey = System.getenv("BILA_API_KEY");
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+            apiKey = "sk_test_your_api_key_here";
+        }
+
+        return BilaOkHttpClient.builder().apiKey(apiKey).sandbox().build();
     }
 }

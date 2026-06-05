@@ -1,6 +1,7 @@
 package com.bila.api.example;
 
 import com.usebila.api.client.BilaClient;
+import com.usebila.api.client.okhttp.BilaOkHttpClient;
 import com.usebila.api.models.webhooks.WebhookCreateParams;
 import com.usebila.api.models.webhooks.WebhookCreateResponse;
 import com.usebila.api.models.webhooks.WebhookDeactivateResponse;
@@ -33,7 +34,7 @@ public final class WebhooksExample {
     }
 
     private static void run() throws Exception {
-        BilaClient client = Examples.createClient();
+        BilaClient client = createClient();
 
         /********************************************
          * Create webhook
@@ -104,5 +105,14 @@ public final class WebhooksExample {
          *********************************************/
         WebhookDeactivateResponse deactivated = client.webhooks().deactivate(WEBHOOK_ID);
         Examples.printJson("deactivate", deactivated);
+    }
+
+    private static BilaClient createClient() {
+        String apiKey = System.getenv("BILA_API_KEY");
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+            apiKey = "sk_test_your_api_key_here";
+        }
+
+        return BilaOkHttpClient.builder().apiKey(apiKey).sandbox().build();
     }
 }
