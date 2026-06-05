@@ -2,8 +2,8 @@
 
 <!-- x-release-please-start-version -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.usebila.api/bila-java)](https://central.sonatype.com/artifact/com.usebila.api/bila-java/0.0.2)
-[![javadoc](https://javadoc.io/badge2/com.usebila.api/bila-java/0.0.2/javadoc.svg)](https://javadoc.io/doc/com.usebila.api/bila-java/0.0.2)
+[![Maven Central](https://img.shields.io/maven-central/v/com.usebila.api/bila-java)](https://central.sonatype.com/artifact/com.usebila.api/bila-java/0.1.0)
+[![javadoc](https://javadoc.io/badge2/com.usebila.api/bila-java/0.1.0/javadoc.svg)](https://javadoc.io/doc/com.usebila.api/bila-java/0.1.0)
 
 <!-- x-release-please-end -->
 
@@ -13,7 +13,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 <!-- x-release-please-start-version -->
 
-Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.usebila.api/bila-java/0.0.2).
+Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.usebila.api/bila-java/0.1.0).
 
 <!-- x-release-please-end -->
 
@@ -24,7 +24,7 @@ Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.usebila.api/bi
 ### Gradle
 
 ```kotlin
-implementation("com.usebila.api:bila-java:0.0.2")
+implementation("com.usebila.api:bila-java:0.1.0")
 ```
 
 ### Maven
@@ -33,7 +33,7 @@ implementation("com.usebila.api:bila-java:0.0.2")
 <dependency>
   <groupId>com.usebila.api</groupId>
   <artifactId>bila-java</artifactId>
-  <version>0.0.2</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
