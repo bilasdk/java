@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-06-10)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/bilasdk/java/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** manual updates ([53cda17](https://github.com/bilasdk/java/commit/53cda1716f2ba637bafd2a77a41c6420f02c70a3))
+
 ## 0.2.0 (2026-06-10)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/bilasdk/java/compare/v0.1.0...v0.2.0)
