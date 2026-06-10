@@ -48,16 +48,15 @@ public final class TransfersExample {
         /********************************************
          * List transfers
          *********************************************/
-        TransferListParams listParams =
-                TransferListParams.builder()
-                        .accountId(ACCOUNT_ID)
-                        .startDate("2024-01-01T00:00:00Z")
-                        .endDate("2024-12-31T23:59:59Z")
-                        .page(1.0)
-                        .perPage(50.0)
-                        .status(TransferListParams.Status.PENDING)
-                        .type(TransferListParams.Type.BANK_ACCOUNT)
-                        .build();
+        TransferListParams listParams = TransferListParams.builder()
+                .accountId(ACCOUNT_ID)
+                .startDate("2024-01-01T00:00:00Z")
+                .endDate("2024-12-31T23:59:59Z")
+                .page(1.0)
+                .perPage(50.0)
+                .status(TransferListParams.Status.PENDING)
+                .type(TransferListParams.Type.BANK_ACCOUNT)
+                .build();
 
         TransferListResponse transfers = client.transfers().list(listParams);
         Examples.printJson("list", transfers);
@@ -65,45 +64,41 @@ public final class TransfersExample {
         /********************************************
          * Get transfer status by reference
          *********************************************/
-        TransferGetStatusByReferenceResponse status =
-                client.transfers().getStatusByReference(BANK_REFERENCE);
+        TransferGetStatusByReferenceResponse status = client.transfers().getStatusByReference(BANK_REFERENCE);
         Examples.printJson("getStatusByReference", status);
 
         /********************************************
          * Initiate bank transfer
          *********************************************/
-        TransferInitiateBankTransferParams bankParams =
-                TransferInitiateBankTransferParams.builder()
-                        .accountId(ACCOUNT_ID)
-                        .amount(1000.0)
-                        .reference(BANK_REFERENCE)
-                        .accountNumber("1234567890")
-                        .bankId("bank-001")
-                        .country(TransferInitiateBankTransferParams.Country.ZM)
-                        .narration("Payment for services")
-                        .recipientName("Jane Doe")
-                        .transferRecipientId(TRANSFER_RECIPIENT_ID)
-                        .walletId(WALLET_ID)
-                        .build();
+        TransferInitiateBankTransferParams bankParams = TransferInitiateBankTransferParams.builder()
+                .accountId(ACCOUNT_ID)
+                .amount(1000.0)
+                .reference(BANK_REFERENCE)
+                .accountNumber("1234567890")
+                .bankId("bank-001")
+                .country(TransferInitiateBankTransferParams.Country.ZM)
+                .narration("Payment for services")
+                .recipientName("Jane Doe")
+                .transferRecipientId(TRANSFER_RECIPIENT_ID)
+                .walletId(WALLET_ID)
+                .build();
 
-        TransferInitiateBankTransferResponse bankTransfer =
-                client.transfers().initiateBankTransfer(bankParams);
+        TransferInitiateBankTransferResponse bankTransfer = client.transfers().initiateBankTransfer(bankParams);
         Examples.printJson("initiateBankTransfer", bankTransfer);
 
         /********************************************
          * Initiate mobile money transfer
          *********************************************/
-        TransferInitiateMobileMoneyTransferParams mobileParams =
-                TransferInitiateMobileMoneyTransferParams.builder()
-                        .amount(250.0)
-                        .country(TransferInitiateMobileMoneyTransferParams.Country.ZM)
-                        .operator(TransferInitiateMobileMoneyTransferParams.Operator.AIRTEL)
-                        .phone("0977433571")
-                        .reference(MOBILE_REFERENCE)
-                        .narration("Mobile money payout")
-                        .recipientName("Jane Doe")
-                        .walletId(WALLET_ID)
-                        .build();
+        TransferInitiateMobileMoneyTransferParams mobileParams = TransferInitiateMobileMoneyTransferParams.builder()
+                .amount(250.0)
+                .country(TransferInitiateMobileMoneyTransferParams.Country.ZM)
+                .operator(TransferInitiateMobileMoneyTransferParams.Operator.AIRTEL)
+                .phone("0977433571")
+                .reference(MOBILE_REFERENCE)
+                .narration("Mobile money payout")
+                .recipientName("Jane Doe")
+                .walletId(WALLET_ID)
+                .build();
 
         TransferInitiateMobileMoneyTransferResponse mobileTransfer =
                 client.transfers().initiateMobileMoneyTransfer(mobileParams);

@@ -9,11 +9,8 @@ final class Examples {
     private Examples() {}
 
     static void printJson(String label, Object value) throws JsonProcessingException {
-        System.out.println(
-                label
-                        + ": "
-                        + ObjectMappers.jsonMapper()
-                                .writerWithDefaultPrettyPrinter()
-                                .writeValueAsString(value));
+        System.out.println(label
+                + ": "
+                + ObjectMappers.jsonMapper().writerWithDefaultPrettyPrinter().writeValueAsString(value));
     }
 }

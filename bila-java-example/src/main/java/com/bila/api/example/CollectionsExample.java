@@ -43,15 +43,14 @@ public final class CollectionsExample {
         /********************************************
          * List collections
          *********************************************/
-        CollectionListParams listParams =
-                CollectionListParams.builder()
-                        .accountId(WALLET_ID)
-                        .startDate("2024-01-01T00:00:00Z")
-                        .endDate("2024-12-31T23:59:59Z")
-                        .page(1.0)
-                        .perPage(50.0)
-                        .status(CollectionListParams.Status.PENDING)
-                        .build();
+        CollectionListParams listParams = CollectionListParams.builder()
+                .accountId(WALLET_ID)
+                .startDate("2024-01-01T00:00:00Z")
+                .endDate("2024-12-31T23:59:59Z")
+                .page(1.0)
+                .perPage(50.0)
+                .status(CollectionListParams.Status.PENDING)
+                .build();
 
         CollectionListResponse collections = client.collections().list(listParams);
         Examples.printJson("list", collections);
@@ -59,8 +58,7 @@ public final class CollectionsExample {
         /********************************************
          * Get collection status by reference
          *********************************************/
-        CollectionGetStatusByReferenceResponse status =
-                client.collections().getStatusByReference(REFERENCE);
+        CollectionGetStatusByReferenceResponse status = client.collections().getStatusByReference(REFERENCE);
         Examples.printJson("getStatusByReference", status);
 
         /********************************************

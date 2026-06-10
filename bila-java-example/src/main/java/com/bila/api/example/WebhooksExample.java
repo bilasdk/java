@@ -39,13 +39,12 @@ public final class WebhooksExample {
         /********************************************
          * Create webhook
          *********************************************/
-        WebhookCreateParams createParams =
-                WebhookCreateParams.builder()
-                        .addEvent(WebhookCreateParams.Event.PAYMENT_COMPLETED)
-                        .addEvent(WebhookCreateParams.Event.WITHDRAWAL_COMPLETED)
-                        .addEvent(WebhookCreateParams.Event.TRANSFER_COMPLETED)
-                        .url("https://example.com/webhooks")
-                        .build();
+        WebhookCreateParams createParams = WebhookCreateParams.builder()
+                .addEvent(WebhookCreateParams.Event.PAYMENT_COMPLETED)
+                .addEvent(WebhookCreateParams.Event.WITHDRAWAL_COMPLETED)
+                .addEvent(WebhookCreateParams.Event.TRANSFER_COMPLETED)
+                .url("https://example.com/webhooks")
+                .build();
 
         WebhookCreateResponse created = client.webhooks().create(createParams);
         Examples.printJson("create", created);
@@ -53,14 +52,13 @@ public final class WebhooksExample {
         /********************************************
          * Update webhook
          *********************************************/
-        WebhookUpdateParams updateParams =
-                WebhookUpdateParams.builder()
-                        .addEvent(WebhookUpdateParams.Event.PAYMENT_COMPLETED)
-                        .addEvent(WebhookUpdateParams.Event.COLLECTION_COMPLETED)
-                        .addEvent(WebhookUpdateParams.Event.TRANSFER_FAILED)
-                        .url("https://example.com/webhooks/v2")
-                        .isActive(true)
-                        .build();
+        WebhookUpdateParams updateParams = WebhookUpdateParams.builder()
+                .addEvent(WebhookUpdateParams.Event.PAYMENT_COMPLETED)
+                .addEvent(WebhookUpdateParams.Event.COLLECTION_COMPLETED)
+                .addEvent(WebhookUpdateParams.Event.TRANSFER_FAILED)
+                .url("https://example.com/webhooks/v2")
+                .isActive(true)
+                .build();
 
         WebhookUpdateResponse updated = client.webhooks().update(WEBHOOK_ID, updateParams);
         Examples.printJson("update", updated);
@@ -74,18 +72,16 @@ public final class WebhooksExample {
         /********************************************
          * Get webhook deliveries
          *********************************************/
-        WebhookGetDeliveriesParams deliveriesParams =
-                WebhookGetDeliveriesParams.builder()
-                        .startDate("2026-04-01T00:00:00.000Z")
-                        .endDate("2026-04-30T23:59:59.999Z")
-                        .eventType("payment.completed")
-                        .page(1.0)
-                        .perPage(20.0)
-                        .status("DELIVERED")
-                        .build();
+        WebhookGetDeliveriesParams deliveriesParams = WebhookGetDeliveriesParams.builder()
+                .startDate("2026-04-01T00:00:00.000Z")
+                .endDate("2026-04-30T23:59:59.999Z")
+                .eventType("payment.completed")
+                .page(1.0)
+                .perPage(20.0)
+                .status("DELIVERED")
+                .build();
 
-        WebhookGetDeliveriesResponse deliveries =
-                client.webhooks().getDeliveries(WEBHOOK_ID, deliveriesParams);
+        WebhookGetDeliveriesResponse deliveries = client.webhooks().getDeliveries(WEBHOOK_ID, deliveriesParams);
         Examples.printJson("getDeliveries", deliveries);
 
         /********************************************
