@@ -31,12 +31,11 @@ public final class ResolveExample {
         /********************************************
          * Resolve bank account
          *********************************************/
-        ResolveBankAccountParams resolveBankParams =
-                ResolveBankAccountParams.builder()
-                        .accountNumber("1234567890")
-                        .bankId("bank-001")
-                        .country(ResolveBankAccountParams.Country.ZM)
-                        .build();
+        ResolveBankAccountParams resolveBankParams = ResolveBankAccountParams.builder()
+                .accountNumber("1234567890")
+                .bankId("bank-001")
+                .country(ResolveBankAccountParams.Country.ZM)
+                .build();
 
         ResolveBankAccountResponse bankAccount = client.resolve().bankAccount(resolveBankParams);
         Examples.printJson("bankAccount", bankAccount);
@@ -44,12 +43,11 @@ public final class ResolveExample {
         /********************************************
          * Resolve mobile money
          *********************************************/
-        ResolveMobileMoneyParams resolveMobileParams =
-                ResolveMobileMoneyParams.builder()
-                        .country(ResolveMobileMoneyParams.Country.ZM)
-                        .operator(ResolveMobileMoneyParams.Operator.AIRTEL)
-                        .phone("0977433571")
-                        .build();
+        ResolveMobileMoneyParams resolveMobileParams = ResolveMobileMoneyParams.builder()
+                .country(ResolveMobileMoneyParams.Country.ZM)
+                .operator(ResolveMobileMoneyParams.Operator.AIRTEL)
+                .phone("0977433571")
+                .build();
 
         ResolveMobileMoneyResponse mobileMoney = client.resolve().mobileMoney(resolveMobileParams);
         Examples.printJson("mobileMoney", mobileMoney);

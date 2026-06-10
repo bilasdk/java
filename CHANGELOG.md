@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.0 (2026-06-10)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/bilasdk/java/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** manual updates ([3169689](https://github.com/bilasdk/java/commit/31696892d9ab49f2cfc80069963bfcfe2e76fc6d))
+
+
+### Chores
+
+* update examples and documentation for Bila JVM SDK ([033c080](https://github.com/bilasdk/java/commit/033c080b2e1f5584f9637c79eb8704c84c0ba932))
+
+
+### Refactors
+
+* included client creation within examples ([f4f63e7](https://github.com/bilasdk/java/commit/f4f63e75621bfd3c0f1021283eabc1e2f366ee86))
+
 ## 0.1.0 (2026-06-05)
 
 Full Changelog: [v0.0.2...v0.1.0](https://github.com/bilasdk/java/compare/v0.0.2...v0.1.0)

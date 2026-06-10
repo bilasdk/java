@@ -43,12 +43,11 @@ public final class TransferRecipientsExample {
         /********************************************
          * List transfer recipients
          *********************************************/
-        TransferRecipientListParams listParams =
-                TransferRecipientListParams.builder()
-                        .page(1.0)
-                        .perPage(50.0)
-                        .type(TransferRecipientListParams.Type.BANK_ACCOUNT)
-                        .build();
+        TransferRecipientListParams listParams = TransferRecipientListParams.builder()
+                .page(1.0)
+                .perPage(50.0)
+                .type(TransferRecipientListParams.Type.BANK_ACCOUNT)
+                .build();
 
         TransferRecipientListResponse recipients = client.transferRecipients().list(listParams);
         Examples.printJson("list", recipients);
@@ -56,13 +55,12 @@ public final class TransferRecipientsExample {
         /********************************************
          * Create bank account recipient
          *********************************************/
-        TransferRecipientCreateBankAccountParams bankParams =
-                TransferRecipientCreateBankAccountParams.builder()
-                        .accountNumber("1234567890")
-                        .bankId("bank-001")
-                        .accountName("John Doe")
-                        .country(TransferRecipientCreateBankAccountParams.Country.ZM)
-                        .build();
+        TransferRecipientCreateBankAccountParams bankParams = TransferRecipientCreateBankAccountParams.builder()
+                .accountNumber("1234567890")
+                .bankId("bank-001")
+                .accountName("John Doe")
+                .country(TransferRecipientCreateBankAccountParams.Country.ZM)
+                .build();
 
         TransferRecipientCreateBankAccountResponse bankRecipient =
                 client.transferRecipients().createBankAccount(bankParams);
@@ -71,13 +69,12 @@ public final class TransferRecipientsExample {
         /********************************************
          * Create mobile money recipient
          *********************************************/
-        TransferRecipientCreateMobileMoneyParams mobileParams =
-                TransferRecipientCreateMobileMoneyParams.builder()
-                        .country(TransferRecipientCreateMobileMoneyParams.Country.ZM)
-                        .operator(TransferRecipientCreateMobileMoneyParams.Operator.AIRTEL)
-                        .phone("0977433571")
-                        .accountName("John Doe")
-                        .build();
+        TransferRecipientCreateMobileMoneyParams mobileParams = TransferRecipientCreateMobileMoneyParams.builder()
+                .country(TransferRecipientCreateMobileMoneyParams.Country.ZM)
+                .operator(TransferRecipientCreateMobileMoneyParams.Operator.AIRTEL)
+                .phone("0977433571")
+                .accountName("John Doe")
+                .build();
 
         TransferRecipientCreateMobileMoneyResponse mobileRecipient =
                 client.transferRecipients().createMobileMoney(mobileParams);

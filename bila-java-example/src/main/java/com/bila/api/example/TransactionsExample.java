@@ -39,15 +39,14 @@ public final class TransactionsExample {
         /********************************************
          * List transactions
          *********************************************/
-        TransactionListParams listParams =
-                TransactionListParams.builder()
-                        .accountId(ACCOUNT_ID)
-                        .startDate("2024-01-01T00:00:00Z")
-                        .endDate("2024-12-31T23:59:59Z")
-                        .page(1.0)
-                        .perPage(50.0)
-                        .type(TransactionListParams.Type.CREDIT)
-                        .build();
+        TransactionListParams listParams = TransactionListParams.builder()
+                .accountId(ACCOUNT_ID)
+                .startDate("2024-01-01T00:00:00Z")
+                .endDate("2024-12-31T23:59:59Z")
+                .page(1.0)
+                .perPage(50.0)
+                .type(TransactionListParams.Type.CREDIT)
+                .build();
 
         TransactionListResponse transactions = client.transactions().list(listParams);
         Examples.printJson("list", transactions);
