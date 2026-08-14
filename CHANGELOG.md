@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.0 (2026-08-14)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/bilasdk/java/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** manual updates ([53cda17](https://github.com/bilasdk/java/commit/53cda1716f2ba637bafd2a77a41c6420f02c70a3))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([10749e9](https://github.com/bilasdk/java/commit/10749e95cf06644f12e127472e103813b3e986d9))
+
+
+### Chores
+
+* **internal:** codegen related update ([8b63eb9](https://github.com/bilasdk/java/commit/8b63eb95a7b471aaf3626714fdb7e269f182394f))
+* **internal:** codegen related update ([088b612](https://github.com/bilasdk/java/commit/088b6121c87afac136e94e196c8be64bf50f999f))
+
 ## 0.2.0 (2026-06-10)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/bilasdk/java/compare/v0.1.0...v0.2.0)
