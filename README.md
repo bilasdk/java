@@ -3,7 +3,7 @@
 <!-- x-release-please-start-version -->
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.usebila.api/bila-java)](https://central.sonatype.com/artifact/com.usebila.api/bila-java/0.2.0)
-[![javadoc](https://javadoc.io/badge2/com.usebila.api/bila-java/0.2.0/javadoc.svg)](https://javadoc.io/doc/com.usebila.api/bila-java/0.2.0)
+[![javadoc](https://javadoc.io/badge2/com.usebila.api/bila-java/javadoc.svg)](https://javadoc.io/doc/com.usebila.api/bila-java/0.2.0)
 
 <!-- x-release-please-end -->
 
